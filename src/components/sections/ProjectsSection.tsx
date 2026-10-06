@@ -42,11 +42,19 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
 
         {/* Compact Container-Bounded Slider Track with Edge Gradient Blur Vignette */}
         <div className="relative w-full overflow-hidden marquee-container py-2">
+          {/* =========================================================================
+              PANDUAN MENGATUR LEBAR EFEK BLUR TEPI (KIRI & KANAN):
+              Ubah class `w-...` pada kedua baris di bawah ini:
+              - Sangat tipis: `w-4 sm:w-6 md:w-8` (16px / 24px / 32px)
+              - Tipis & rapi:  `w-6 sm:w-8 md:w-12` (24px / 32px / 48px) [SAAT INI]
+              - Sedang:        `w-10 sm:w-16 md:w-20` (40px / 64px / 80px)
+              - Pixel manual:  `w-[24px] md:w-[36px]`
+              ========================================================================= */}
           {/* Left Edge Gradient Blur Fade */}
-          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-20 bg-gradient-to-r from-background via-background/85 to-transparent backdrop-blur-[2px]" />
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-6 sm:w-8 md:w-12 z-20 bg-gradient-to-r from-background via-background/85 to-transparent backdrop-blur-[2px]" />
 
           {/* Right Edge Gradient Blur Fade */}
-          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-20 bg-gradient-to-l from-background via-background/85 to-transparent backdrop-blur-[2px]" />
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-6 sm:w-8 md:w-12 z-20 bg-gradient-to-l from-background via-background/85 to-transparent backdrop-blur-[2px]" />
 
           {/* Continuous Animated Marquee Track (Left to Right) */}
           <div className="animate-marquee-ltr flex gap-6 lg:gap-8">

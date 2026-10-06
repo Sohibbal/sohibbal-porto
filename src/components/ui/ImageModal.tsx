@@ -11,6 +11,7 @@ interface ImageModalProps {
   imageSrc: string;
   title: string;
   subtitle?: string;
+  description?: string;
 }
 
 export default function ImageModal({
@@ -19,6 +20,7 @@ export default function ImageModal({
   imageSrc,
   title,
   subtitle,
+  description,
 }: ImageModalProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -55,16 +57,16 @@ export default function ImageModal({
             aria-hidden="true"
           />
 
-          {/* Modal Container with Sharp Edges */}
+          {/* Modal Container with Sharp Edges & Scrollable Content */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col rounded-none bg-surface border-2 border-border-subtle shadow-2xl overflow-hidden"
+            className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col rounded-none bg-surface border-2 border-border-subtle shadow-2xl overflow-y-auto"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-5 border-b border-border-subtle bg-surface/90 backdrop-blur-sm">
+            <div className="sticky top-0 z-20 flex items-center justify-between p-4 sm:p-5 border-b border-border-subtle bg-surface/95 backdrop-blur-md">
               <div className="space-y-0.5 pr-4">
                 <h3 className="font-bold text-base sm:text-lg text-text-primary line-clamp-1">
                   {title}
@@ -87,8 +89,8 @@ export default function ImageModal({
             </div>
 
             {/* Modal Image Body */}
-            <div className="relative flex-1 min-h-[300px] sm:min-h-[460px] max-h-[70vh] w-full bg-slate-950/20 flex items-center justify-center p-2 sm:p-4 overflow-hidden">
-              <div className="relative w-full h-full min-h-[300px] sm:min-h-[440px]">
+            <div className="relative min-h-[260px] sm:min-h-[420px] w-full bg-slate-950/20 flex items-center justify-center p-3 sm:p-6">
+              <div className="relative w-full h-[260px] sm:h-[400px]">
                 <SafeImage
                   src={imageSrc}
                   alt={title}
@@ -98,19 +100,24 @@ export default function ImageModal({
               </div>
             </div>
 
-            {/* Modal Footer */}
+            {/* Modal Description & Details (Keterangan Lengkap Sesuai Card) */}
+            {description && (
+              <div className="p-4 sm:p-6 border-t border-border-subtle bg-surface-muted/30 space-y-2">
+                <h4 className="text-[11px] font-bold uppercase tracking-wider text-accent-brand">
+                  Keterangan &amp; Deskripsi
+                </h4>
+                <p className="text-xs sm:text-sm text-text-primary leading-relaxed font-normal">
+                  {description}
+                </p>
+              </div>
+            )}
+
+            {/* Modal Footer (Tanpa Tombol Tutup di Kanan Bawah) */}
             <div className="p-3 sm:p-4 border-t border-border-subtle bg-surface/90 flex items-center justify-between text-xs text-text-muted">
               <span className="flex items-center space-x-1.5">
                 <ZoomIn className="w-4 h-4 text-accent-brand" />
-                <span>Tekan Esc atau klik di luar untuk menutup</span>
+                <span>Tekan Esc atau klik tombol silang (X) di atas untuk menutup</span>
               </span>
-              <button
-                type="button"
-                onClick={onClose}
-                className="px-4 py-1.5 bg-surface-muted border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors font-medium rounded-none"
-              >
-                Tutup
-              </button>
             </div>
           </motion.div>
         </div>

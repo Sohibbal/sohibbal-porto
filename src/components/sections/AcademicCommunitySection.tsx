@@ -6,7 +6,12 @@ import SafeImage from '@/components/ui/SafeImage';
 import { academicCommunityData } from '@/data/portfolioData';
 
 interface AcademicCommunitySectionProps {
-  onSelectImage: (image: { src: string; title: string; subtitle?: string }) => void;
+  onSelectImage: (image: {
+    src: string;
+    title: string;
+    subtitle?: string;
+    description?: string;
+  }) => void;
 }
 
 const categories = ['Semua', 'Asisten Laboratorium', 'AI Cohort', 'Riset & Software', 'Workshop & Hackathon'];
@@ -68,6 +73,7 @@ export default function AcademicCommunitySection({ onSelectImage }: AcademicComm
                   src: item.image,
                   title: `${item.role} : ${item.event}`,
                   subtitle: `Tahun ${item.year} • Kategori ${item.category}`,
+                  description: item.description,
                 })
               }
               className="flex flex-col bg-surface border-2 border-border-subtle overflow-hidden cursor-pointer group hover:border-accent-brand transition-all duration-200 shadow-sm rounded-none"

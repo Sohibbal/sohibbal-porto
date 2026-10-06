@@ -4,6 +4,7 @@ import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Github } from 'lucide-react';
 import SafeImage from '@/components/ui/SafeImage';
+import TechIcon from '@/components/ui/TechIcon';
 import { ProjectItem } from '@/types/portfolio';
 
 interface ProjectModalProps {
@@ -97,9 +98,10 @@ export default function ProjectModal({ isOpen, onClose, project }: ProjectModalP
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 text-[11px] font-semibold bg-surface-muted text-text-primary border border-border-subtle rounded-none"
+                    className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-semibold bg-surface-muted text-text-primary border border-border-subtle rounded-none"
                   >
-                    {tech}
+                    <TechIcon name={tech} className="w-3.5 h-3.5 shrink-0" />
+                    <span>{tech}</span>
                   </span>
                 ))}
               </div>

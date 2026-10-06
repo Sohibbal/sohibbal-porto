@@ -73,10 +73,18 @@ export default function ChatBotDrawer() {
     setIsLoading(true);
 
     try {
+      const historyPayload = messages
+        .filter((m) => m.id !== 'welcome')
+        .slice(-6)
+        .map((m) => ({
+          role: m.sender,
+          text: m.text,
+        }));
+
       const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message: text }),
+        body: JSON.stringify({ message: text, history: historyPayload }),
       });
 
       if (!res.ok) {

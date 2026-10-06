@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import SafeImage from '@/components/ui/SafeImage';
+import TechIcon from '@/components/ui/TechIcon';
 import { projectsData } from '@/data/portfolioData';
 import { ProjectItem } from '@/types/portfolio';
 
@@ -87,9 +88,10 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
                     {project.techStack.slice(0, 4).map((tech) => (
                       <span
                         key={tech}
-                        className="text-[10px] font-semibold px-2 py-0.5 bg-surface-muted text-text-primary border border-border-subtle rounded-none"
+                        className="inline-flex items-center gap-1.5 text-[10px] font-semibold px-2 py-0.5 bg-surface-muted text-text-primary border border-border-subtle rounded-none"
                       >
-                        {tech}
+                        <TechIcon name={tech} className="w-3 h-3 shrink-0" />
+                        <span>{tech}</span>
                       </span>
                     ))}
                     {project.techStack.length > 4 && (

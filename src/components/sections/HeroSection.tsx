@@ -138,7 +138,7 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-12 md:mt-16 pt-8 border-t border-border-subtle grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
+          className="mt-20 md:mt-32 pt-8 border-t border-border-subtle grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
         >
           {/* Metric 1 */}
           <div className="md:pr-8 space-y-1">

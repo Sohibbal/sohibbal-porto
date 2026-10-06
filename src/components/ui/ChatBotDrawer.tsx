@@ -10,6 +10,7 @@ interface Message {
   text: string;
   sources?: string[];
   time: string;
+  isStreaming?: boolean;
 }
 
 const quickPrompts = [
@@ -22,6 +23,7 @@ export default function ChatBotDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isTyping, setIsTyping] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: 'welcome',
@@ -33,6 +35,8 @@ export default function ChatBotDrawer() {
 
   const messagesEndRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
+  const typingTimerRef = useRef<NodeJS.Timeout | null>(null);
+  const activeBotMsgRef = useRef<{ id: string; fullText: string; sources?: string[] } | null>(null);
 
   // Auto scroll to bottom
   const scrollToBottom = () => {
@@ -57,9 +61,107 @@ export default function ChatBotDrawer() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen]);
 
+  // Cleanup typing interval on unmount
+  useEffect(() => {
+    return () => {
+      if (typingTimerRef.current) {
+        clearInterval(typingTimerRef.current);
+      }
+    };
+  }, []);
+
+  // Complete typing immediately if drawer is closed mid-stream
+  useEffect(() => {
+    if (!isOpen && isTyping && activeBotMsgRef.current) {
+      if (typingTimerRef.current) {
+        clearInterval(typingTimerRef.current);
+      }
+      const { id, fullText, sources } = activeBotMsgRef.current;
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === id ? { ...m, text: fullText, sources, isStreaming: false } : m
+        )
+      );
+      activeBotMsgRef.current = null;
+      setIsTyping(false);
+    }
+  }, [isOpen, isTyping]);
+
+  // Smooth typewriter streaming animation for assistant responses
+  const streamBotMessage = (fullText: string, sources?: string[]) => {
+    if (typingTimerRef.current) {
+      clearInterval(typingTimerRef.current);
+    }
+
+    const botMsgId = `bot-${Date.now()}`;
+    const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    activeBotMsgRef.current = { id: botMsgId, fullText, sources };
+
+    const step = Math.max(1, Math.min(5, Math.ceil(fullText.length / 110)));
+    const intervalSpeed = 22;
+    const initialLength = Math.min(step, fullText.length);
+    let currentIdx = initialLength;
+
+    setMessages((prev) => [
+      ...prev,
+      {
+        id: botMsgId,
+        sender: 'assistant',
+        text: fullText.slice(0, currentIdx),
+        sources: undefined,
+        time: timestamp,
+        isStreaming: true,
+      },
+    ]);
+
+    setIsTyping(true);
+
+    if (currentIdx >= fullText.length) {
+      setMessages((prev) =>
+        prev.map((m) =>
+          m.id === botMsgId
+            ? { ...m, text: fullText, sources, isStreaming: false }
+            : m
+        )
+      );
+      activeBotMsgRef.current = null;
+      setIsTyping(false);
+      return;
+    }
+
+    typingTimerRef.current = setInterval(() => {
+      currentIdx += step;
+      if (currentIdx >= fullText.length) {
+        if (typingTimerRef.current) clearInterval(typingTimerRef.current);
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === botMsgId
+              ? { ...m, text: fullText, sources, isStreaming: false }
+              : m
+          )
+        );
+        activeBotMsgRef.current = null;
+        setIsTyping(false);
+        setTimeout(() => {
+          messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+        }, 50);
+      } else {
+        const nextSlice = fullText.slice(0, currentIdx);
+        setMessages((prev) =>
+          prev.map((m) =>
+            m.id === botMsgId
+              ? { ...m, text: nextSlice }
+              : m
+          )
+        );
+        messagesEndRef.current?.scrollIntoView({ behavior: 'auto' });
+      }
+    }, intervalSpeed);
+  };
+
   const handleSendMessage = async (textToSend?: string) => {
     const text = (textToSend || inputMessage).trim();
-    if (!text || isLoading) return;
+    if (!text || isLoading || isTyping) return;
 
     const userMsg: Message = {
       id: `user-${Date.now()}`,
@@ -92,29 +194,23 @@ export default function ChatBotDrawer() {
       }
 
       const data = await res.json();
-      const botMsg: Message = {
-        id: `bot-${Date.now()}`,
-        sender: 'assistant',
-        text: data.reply || 'Maaf, saya tidak dapat menemukan informasi terkait hal tersebut.',
-        sources: data.sources,
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      };
-
-      setMessages((prev) => [...prev, botMsg]);
-    } catch (err) {
-      const errorMsg: Message = {
-        id: `err-${Date.now()}`,
-        sender: 'assistant',
-        text: 'Koneksi asisten sedang mengalami kendala. Silakan coba kembali dalam beberapa saat atau hubungi Sohibbal langsung melalui WhatsApp di +62 822-8774-9434.',
-        time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-      };
-      setMessages((prev) => [...prev, errorMsg]);
-    } finally {
       setIsLoading(false);
+      const replyText = data.reply || 'Maaf, saya tidak dapat menemukan informasi terkait hal tersebut.';
+      streamBotMessage(replyText, data.sources);
+    } catch (err) {
+      setIsLoading(false);
+      const errorMsgText = 'Koneksi asisten sedang mengalami kendala. Silakan coba kembali dalam beberapa saat atau hubungi Sohibbal langsung melalui WhatsApp di +62 822-8774-9434.';
+      streamBotMessage(errorMsgText);
     }
   };
 
   const handleResetChat = () => {
+    if (typingTimerRef.current) {
+      clearInterval(typingTimerRef.current);
+    }
+    activeBotMsgRef.current = null;
+    setIsTyping(false);
+    setIsLoading(false);
     setMessages([
       {
         id: 'welcome',
@@ -216,7 +312,12 @@ export default function ChatBotDrawer() {
                           : 'bg-surface text-text-primary border-border-subtle leading-relaxed'
                       }`}
                     >
-                      <p className="whitespace-pre-wrap leading-relaxed">{msg.text}</p>
+                      <p className="whitespace-pre-wrap leading-relaxed">
+                        {msg.text}
+                        {msg.isStreaming && (
+                          <span className="inline-block w-1.5 h-3 bg-accent-brand ml-1 align-baseline animate-pulse" />
+                        )}
+                      </p>
 
                       {/* Cited Sources for RAG Transparency */}
                       {msg.sources && msg.sources.length > 0 && (
@@ -259,7 +360,7 @@ export default function ChatBotDrawer() {
                     key={idx}
                     type="button"
                     onClick={() => handleSendMessage(prompt)}
-                    disabled={isLoading}
+                    disabled={isLoading || isTyping}
                     className="text-[11px] px-2.5 py-1 bg-surface-muted text-text-primary border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors text-left disabled:opacity-50"
                   >
                     {prompt}
@@ -282,12 +383,12 @@ export default function ChatBotDrawer() {
                   }}
                   placeholder="Tanyakan proyek, skill, pengalaman..."
                   className="flex-1 px-3 py-2.5 bg-surface text-text-primary text-xs border border-border-subtle focus:border-accent-brand focus:outline-none rounded-none"
-                  disabled={isLoading}
+                  disabled={isLoading || isTyping}
                 />
                 <button
                   type="button"
                   onClick={() => handleSendMessage()}
-                  disabled={isLoading || !inputMessage.trim()}
+                  disabled={isLoading || isTyping || !inputMessage.trim()}
                   className="px-3.5 py-2.5 bg-accent-brand text-background border border-accent-brand hover:bg-accent-hover transition-colors disabled:opacity-50 flex items-center justify-center rounded-none"
                   aria-label="Kirim pesan"
                 >

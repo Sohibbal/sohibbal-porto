@@ -19,6 +19,23 @@ const quickPrompts = [
   'Bagaimana cara menghubungi Sohibbal?',
 ];
 
+// =========================================================================
+// KONFIGURASI KECEPATAN ANIMASI KETIKAN (TYPEWRITER SPEED CONFIG)
+// Anda dapat mengatur seberapa cepat atau lambat chatbot mengetik di sini:
+//
+// 1. TYPEWRITER_INTERVAL_MS : Jeda waktu antar ketukan huruf (milidetik).
+//    - Semakin BESAR angkanya, semakin SLOW / LAMBAT animasinya.
+//    - Nilai Cepat       : 15 - 20 ms
+//    - Nilai Slow/Alami  : 30 - 38 ms (disetel ke 35 ms agar lebih santai)
+//    - Nilai Sangat Slow : 45 - 60 ms
+//
+// 2. TYPEWRITER_CHAR_STEP   : Jumlah huruf yang keluar per ketukan waktu.
+//    - Nilai 1 : Mengetik huruf demi huruf secara presisi (rekomendasi).
+//    - Nilai 2 : Dua huruf sekaligus per ketukan.
+// =========================================================================
+const TYPEWRITER_INTERVAL_MS = 35;
+const TYPEWRITER_CHAR_STEP = 1;
+
 export default function ChatBotDrawer() {
   const [isOpen, setIsOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
@@ -97,8 +114,9 @@ export default function ChatBotDrawer() {
     const timestamp = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     activeBotMsgRef.current = { id: botMsgId, fullText, sources };
 
-    const step = Math.max(1, Math.min(5, Math.ceil(fullText.length / 110)));
-    const intervalSpeed = 22;
+    // Mengetik huruf per huruf secara santai & alami
+    const step = fullText.length > 350 ? Math.max(1, TYPEWRITER_CHAR_STEP * 2) : TYPEWRITER_CHAR_STEP;
+    const intervalSpeed = TYPEWRITER_INTERVAL_MS;
     const initialLength = Math.min(step, fullText.length);
     let currentIdx = initialLength;
 

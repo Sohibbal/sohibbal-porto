@@ -9,21 +9,21 @@
   --border-subtle: #E8E0D2;
   --text-primary: #0A1329;
   --text-muted: #4A576E;
-  --accent-brand: #0A1329;
-  --accent-hover: #1A284A;
-  --accent-soft: #EFE7DB;
+  --accent-brand: #FF6F00;
+  --accent-hover: #EA580C;
+  --accent-soft: #FFF3E0;
 }
 
 .dark {
-  --background: #070D1D;
-  --surface: #0D162C;
-  --surface-muted: #13203E;
-  --border-subtle: #1D2E52;
-  --text-primary: #FBF8F3;
-  --text-muted: #94A6C2;
-  --accent-brand: #FBF8F3;
-  --accent-hover: #FFFFFF;
-  --accent-soft: #162447;
+  --background: #0B0F17;
+  --surface: #111827;
+  --surface-muted: #1A2333;
+  --border-subtle: #1F2937;
+  --text-primary: #F9FAFB;
+  --text-muted: #9CA3AF;
+  --accent-brand: #FF7043;
+  --accent-hover: #FF8A65;
+  --accent-soft: #2A1708;
 }
 
 html {
@@ -39,7 +39,42 @@ body {
   letter-spacing: -0.015em;
 }
 
-/* Smooth Ease-in-out Theme Transition */
+/* Sharp Edges & Lighting Glass Card Utility */
+.glass-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(255, 111, 0, 0.45);
+}
+
+.lighting-sheen {
+  position: relative;
+  overflow: hidden;
+}
+
+.lighting-sheen::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 111, 0, 0.08), transparent);
+  transform: skewX(-20deg);
+  transition: none;
+  pointer-events: none;
+}
+
+.lighting-sheen:hover::after {
+  left: 150%;
+  transition: left 0.75s ease;
+}
+
+/* Smooth Transition for theme changes */
 html,
 body,
 header,
@@ -56,6 +91,6 @@ h3,
 h4,
 span {
   transition-property: background-color, border-color, color, fill, stroke;
-  transition-duration: 400ms;
+  transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }

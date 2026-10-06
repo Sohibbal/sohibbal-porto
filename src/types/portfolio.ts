@@ -1,15 +1,16 @@
-export interface Publication {
+export interface ProjectItem {
   id: string;
   title: string;
-  journal: string;
-  category: string;
-  authors: string[];
-  abstract: string;
-  focus: string;
-  link?: string;
+  category: 'AI / Machine Learning' | 'Mobile & Web' | 'MLOps';
+  projectType: 'Group Project' | 'Individual Project';
+  summary: string;
+  role: string;
+  contribution: string;
+  whatILearned: string;
+  techStack: string[];
   previewImage: string;
-  pdfUrl?: string;
-  year: string;
+  githubUrl?: string;
+  deployUrl?: string;
 }
 
 export interface ExperienceItem {
@@ -30,15 +31,17 @@ export interface CertificateItem {
   date: string;
   image: string;
   description: string;
+  badge?: string;
 }
 
-export interface OrganizationItem {
+export interface AcademicCommunityItem {
   id: string;
   role: string;
   event: string;
   year: string;
   image: string;
-  category: 'Kepanitiaan' | 'Kepemimpinan' | 'Prestasi' | 'Dokumentasi' | 'Public Speaking';
+  category: 'Asisten Laboratorium' | 'AI Cohort' | 'Riset & Software' | 'Workshop & Hackathon';
+  description: string;
 }
 
 export interface ToolItem {
@@ -46,7 +49,6 @@ export interface ToolItem {
   category: string;
   description: string;
   iconPath?: string;
-  iconType: 'eviews' | 'excel' | 'mendeley' | 'word' | 'canva' | 'capcut';
 }
 
 export interface ContactInfo {
@@ -56,17 +58,21 @@ export interface ContactInfo {
   email: string;
   instagram: string;
   instagramLink: string;
+  github: string;
+  githubLink: string;
+  linkedin: string;
+  linkedinLink: string;
   location: string;
 }
 
 export interface PersonalProfile {
   name: string;
-  role: string;
+  roles: string[];
   university: string;
   faculty: string;
   major: string;
-  semester: string;
+  gpa: string;
   bio: string;
-  quote: string;
+  motto: string;
   portraitImage: string;
 }

@@ -94,3 +94,26 @@ span {
   transition-duration: 300ms;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Continuous Marquee Slider (Left to Right) with Pause on Hover */
+@keyframes marquee-ltr {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.animate-marquee-ltr {
+  display: flex;
+  width: max-content;
+  animation: marquee-ltr 50s linear infinite;
+  will-change: transform;
+}
+
+.animate-marquee-ltr:hover,
+.marquee-container:hover .animate-marquee-ltr {
+  animation-play-state: paused;
+}
+

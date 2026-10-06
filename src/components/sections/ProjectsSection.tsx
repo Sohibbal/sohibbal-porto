@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Github, ExternalLink, ArrowRight } from 'lucide-react';
 import SafeImage from '@/components/ui/SafeImage';
 import TechIcon from '@/components/ui/TechIcon';
@@ -13,33 +12,49 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection({ onSelectProject }: ProjectsSectionProps) {
+  // Duplikasi data 4x untuk looping mulus tanpa celah di semua ukuran layar
+  const duplicatedProjects = [...projectsData, ...projectsData, ...projectsData, ...projectsData];
+
   return (
-    <section id="proyek" className="pb-20 md:pb-28 bg-background">
+    <section id="proyek" className="pb-20 md:pb-28 bg-background overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 border-t border-border-subtle">
         {/* Section Header */}
-        <div className="max-w-2xl mb-14 space-y-3">
-          <div className="inline-flex items-center space-x-2 px-3 py-1 bg-surface-muted border border-border-subtle text-xs font-semibold text-text-muted rounded-none">
-            <span className="w-1.5 h-1.5 bg-accent-brand" />
-            <span>Karya &amp; Implementasi</span>
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
+          <div className="max-w-2xl space-y-3">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-surface-muted border border-border-subtle text-xs font-semibold text-text-muted rounded-none">
+              <span className="w-1.5 h-1.5 bg-accent-brand" />
+              <span>Karya &amp; Implementasi</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary leading-[1.15]">
+              Featured AI &amp; Software Projects
+            </h2>
+            <p className="text-sm sm:text-base text-text-muted leading-relaxed font-normal">
+              Etalase 5 proyek nyata mencakup sistem evaluasi wawancara multimodal, mesin rekomendasi neural, asisten informasi RAG, aplikasi mitigasi bencana mobile, dan alur kerja MLOps.
+            </p>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary leading-[1.15]">
-            Featured AI &amp; Software Projects
-          </h2>
-          <p className="text-sm sm:text-base text-text-muted leading-relaxed font-normal">
-            Etalase 5 proyek nyata mencakup sistem evaluasi wawancara multimodal, mesin rekomendasi neural, asisten informasi RAG, aplikasi mitigasi bencana mobile, dan alur kerja MLOps.
-          </p>
-        </div>
 
-        {/* Projects Grid: Sharp Glass Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {projectsData.map((project, idx) => (
-            <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.08 }}
-              className="flex flex-col justify-between bg-surface border-2 border-border-subtle p-5 hover:border-accent-brand transition-all duration-200 group rounded-none shadow-sm"
+          {/* Interactive Pause Hint */}
+          <div className="hidden sm:inline-flex items-center space-x-2 px-3 py-1.5 bg-surface border border-border-subtle text-[11px] font-medium text-text-muted rounded-none self-start sm:self-auto shrink-0 shadow-sm">
+            <span className="w-1.5 h-1.5 bg-accent-brand animate-pulse" />
+            <span>Arahkan kursor untuk menjeda slider</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Full-width Slider Track with Edge Gradient Blur Vignette */}
+      <div className="relative w-full overflow-hidden marquee-container py-4">
+        {/* Left Edge Gradient Blur Fade */}
+        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-44 z-20 bg-gradient-to-r from-background via-background/85 to-transparent backdrop-blur-[2px]" />
+
+        {/* Right Edge Gradient Blur Fade */}
+        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-44 z-20 bg-gradient-to-l from-background via-background/85 to-transparent backdrop-blur-[2px]" />
+
+        {/* Continuous Animated Marquee Track (Left to Right) */}
+        <div className="animate-marquee-ltr flex gap-6 lg:gap-8 px-4">
+          {duplicatedProjects.map((project, idx) => (
+            <div
+              key={`${project.id}-${idx}`}
+              className="w-[310px] sm:w-[350px] md:w-[380px] shrink-0 flex flex-col justify-between bg-surface border-2 border-border-subtle p-5 hover:border-accent-brand transition-all duration-200 group rounded-none shadow-sm select-none"
             >
               <div className="space-y-4">
                 {/* Slide Preview Frame with Sharp Edges */}
@@ -70,7 +85,7 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
                   <div className="flex items-center justify-between gap-2">
                     <h3
                       onClick={() => onSelectProject(project)}
-                      className="font-extrabold text-lg text-text-primary leading-snug group-hover:text-accent-brand transition-colors cursor-pointer"
+                      className="font-extrabold text-base sm:text-lg text-text-primary leading-snug group-hover:text-accent-brand transition-colors cursor-pointer"
                     >
                       {project.title}
                     </h3>
@@ -141,7 +156,7 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
                   <ArrowRight className="w-3.5 h-3.5 ml-0.5" />
                 </button>
               </div>
-            </motion.div>
+            </div>
           ))}
         </div>
       </div>

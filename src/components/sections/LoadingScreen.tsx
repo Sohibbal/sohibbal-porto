@@ -99,7 +99,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 M. Sohibbal
               </h2>
               <p className="text-[11px] uppercase tracking-widest text-text-muted font-semibold">
-                AI Engineer &amp; Software Portfolio
+                AI &amp; Software Portfolio
               </p>
             </motion.div>
 

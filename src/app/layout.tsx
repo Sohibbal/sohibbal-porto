@@ -10,10 +10,10 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Yuri Marisa",
-  description: "Portofolio Yuri Marisa",
-  keywords: ["Yuri Marisa", "Ekonomi Pembangunan", "Universitas Riau", "BAPPEDA Bengkalis", "Riset Ekonometri", "EViews"],
-  authors: [{ name: "Yuri Marisa" }],
+  title: "M. Sohibbal • AI Engineer & Software Developer Portfolio",
+  description: "Portofolio resmi M. Sohibbal: Mahasiswa Teknik Informatika Universitas Riau (IPK 3.81), AI / Machine Learning Engineer, MLOps, dan Fullstack Developer.",
+  keywords: ["M. Sohibbal", "Sohibbal", "AI Engineer", "Machine Learning", "Universitas Riau", "MLOps", "TensorFlow", "Next.js", "Flutter", "RAG"],
+  authors: [{ name: "M. Sohibbal" }],
   icons: {
     icon: [
       { url: '/icon.svg', type: 'image/svg+xml' },
@@ -37,8 +37,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{
             __html: `
               try {
-                const theme = localStorage.getItem('yuri_theme');
-                // Default adalah dark mode, kecuali jika user secara spesifik memilih 'light'
+                const theme = localStorage.getItem('sohibbal_theme');
                 if (theme === 'light') {
                   document.documentElement.classList.remove('dark');
                 } else {

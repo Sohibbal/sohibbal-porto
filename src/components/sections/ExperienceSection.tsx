@@ -14,62 +14,67 @@ export default function ExperienceSection({ onSelectImage }: ExperienceSectionPr
     <section id="pengalaman" className="pb-20 md:pb-28 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 border-t border-border-subtle">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-          {/* Left Column (Sticky Title & Subtitle, identical to AboutSection / Tools) */}
+          {/* Left Column (Sticky Title & Subtitle) */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.5 }}
             className="lg:col-span-5 space-y-4 lg:sticky lg:top-28"
           >
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-surface-muted border border-border-subtle text-xs font-semibold text-text-muted rounded-none">
+              <span className="w-1.5 h-1.5 bg-accent-brand" />
+              <span>Rekam Jejak &amp; Pengalaman</span>
+            </div>
+
             <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-text-primary leading-[1.15]">
-              Dari kampus sampai kebijakan nyata
+              Asisten laboratorium &amp; program industri
             </h2>
             <p className="text-sm sm:text-base text-text-muted leading-relaxed font-normal">
-              Pengalaman nyata dalam birokrasi perencanaan daerah di BAPPEDA Kabupaten Bengkalis serta advokasi keberlanjutan lingkungan hidup pesisir bersama WALHI Riau.
+              Dedikasi mengajar di laboratorium kecerdasan buatan dan basis data Universitas Riau, rekayasa software di LPPM, serta pencapaian lulusan terbaik pada program industri nasional.
             </p>
 
-            <div className="pt-4 border-t border-border-subtle/80 space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-wider text-text-muted">
+            <div className="pt-4 border-t border-border-subtle space-y-2">
+              <p className="text-xs font-bold uppercase tracking-wider text-text-muted">
                 Pilar Pengalaman
               </p>
               <p className="text-xs text-text-muted leading-relaxed">
-                Evaluasi Renja 47 OPD • Koordinasi Lintas Sektor BAPPEDA, BPS, Diskominfo • Kepemimpinan Advokasi Lingkungan.
+                Asisten Praktikum AI &bull; Asisten Praktikum Basis Data &bull; Software Engineer Chatbot LPPM &bull; Cohort AI DBS &amp; Accenture &bull; Pemodelan Risiko Home Credit.
               </p>
             </div>
           </motion.div>
 
-          {/* Right Column: Vertical Timeline Style (Mengalir ke bawah) */}
+          {/* Right Column: Vertical Timeline Style with Sharp Geometric Nodes */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            transition={{ duration: 0.5, delay: 0.1 }}
             className="lg:col-span-7 relative pl-6 sm:pl-8 border-l-2 border-border-subtle space-y-12 my-2"
           >
-            {experiencesData.map((exp, idx) => (
+            {experiencesData.map((exp) => (
               <div key={exp.id} className="relative space-y-4 group">
-                {/* Timeline Node Dot on the vertical line */}
-                <div className="absolute -left-[31px] sm:-left-[39px] top-1 w-3.5 h-3.5 rounded-full bg-background border-2 border-accent-brand shadow-sm group-hover:scale-125 transition-transform" />
+                {/* Timeline Square Node on the vertical line */}
+                <div className="absolute -left-[31px] sm:-left-[39px] top-1.5 w-3.5 h-3.5 bg-background border-2 border-accent-brand group-hover:bg-accent-brand transition-colors rounded-none" />
 
                 {/* Timeline Header Info */}
                 <div className="space-y-1">
                   <div className="flex items-center space-x-2">
-                    <span className="text-[11px] font-bold uppercase tracking-wider text-text-muted px-2.5 py-0.5 rounded-md bg-surface-muted border border-border-subtle">
+                    <span className="text-[11px] font-bold uppercase tracking-wider text-accent-brand px-2.5 py-0.5 bg-surface-muted border border-border-subtle rounded-none">
                       {exp.period}
                     </span>
                     {exp.location && (
                       <span className="text-xs text-text-muted">
-                        • {exp.location}
+                        &bull; {exp.location}
                       </span>
                     )}
                   </div>
 
-                  <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-text-primary pt-1">
+                  <h3 className="text-xl sm:text-2xl font-extrabold tracking-tight text-text-primary pt-1">
                     {exp.organization}
                   </h3>
 
-                  <p className="text-xs sm:text-sm font-semibold text-text-muted">
+                  <p className="text-xs sm:text-sm font-bold text-text-muted">
                     {exp.role}
                   </p>
                 </div>
@@ -78,51 +83,21 @@ export default function ExperienceSection({ onSelectImage }: ExperienceSectionPr
                 <div className="space-y-2 text-xs sm:text-sm text-text-muted leading-relaxed font-normal pt-1">
                   {exp.description.map((item, i) => (
                     <p key={i} className="flex items-start space-x-2.5">
-                      <span className="text-accent-brand font-bold shrink-0 mt-0.5">•</span>
+                      <span className="text-accent-brand font-bold shrink-0 mt-0.5">&bull;</span>
                       <span>{item}</span>
                     </p>
                   ))}
                 </div>
 
                 {/* Tags */}
-                <div className="flex flex-wrap gap-2 pt-1">
+                <div className="flex flex-wrap gap-1.5 pt-1">
                   {exp.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-2.5 py-1 rounded-md text-[11px] font-medium bg-surface-muted border border-border-subtle text-text-muted"
+                      className="px-2 py-0.5 text-[11px] font-medium bg-surface-muted border border-border-subtle text-text-primary rounded-none"
                     >
                       {tag}
                     </span>
-                  ))}
-                </div>
-
-                {/* Photo Previews with Click to Zoom */}
-                <div className="grid grid-cols-2 gap-3 pt-3">
-                  {exp.images.map((img, imgIdx) => (
-                    <div
-                      key={imgIdx}
-                      onClick={() =>
-                        onSelectImage &&
-                        onSelectImage({
-                          src: img,
-                          title: exp.organization,
-                          subtitle: `${exp.role} : ${exp.period}`,
-                        })
-                      }
-                      className="relative h-36 sm:h-40 rounded-xl overflow-hidden bg-surface-muted border border-border-subtle cursor-pointer group/img shadow-sm"
-                    >
-                      <SafeImage
-                        src={img}
-                        alt={`${exp.organization} dokumentasi`}
-                        fill
-                        className="object-cover group-hover/img:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="text-[11px] font-medium text-white px-2.5 py-1 rounded-lg bg-black/70">
-                          Perbesar Foto
-                        </span>
-                      </div>
-                    </div>
                   ))}
                 </div>
               </div>

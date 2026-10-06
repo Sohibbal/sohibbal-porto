@@ -364,7 +364,3 @@ export const contactData: ContactInfo = {
   linkedinLink: 'https://www.linkedin.com/in/msohibbal/',
   location: 'Pekanbaru, Riau, Indonesia',
 };
-
-// Aliases for backward compatibility during task execution
-export const publicationsData: any[] = projectsData;
-export const organizationsData: any[] = academicCommunityData;

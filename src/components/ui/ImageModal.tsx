@@ -55,13 +55,13 @@ export default function ImageModal({
             aria-hidden="true"
           />
 
-          {/* Modal Container */}
+          {/* Modal Container with Sharp Edges */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col rounded-2xl bg-surface border border-border-subtle shadow-2xl overflow-hidden"
+            className="relative z-10 w-full max-w-4xl max-h-[90vh] flex flex-col rounded-none bg-surface border-2 border-border-subtle shadow-2xl overflow-hidden"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-4 sm:p-5 border-b border-border-subtle bg-surface/90 backdrop-blur-sm">
@@ -80,7 +80,7 @@ export default function ImageModal({
                 type="button"
                 onClick={onClose}
                 aria-label="Tutup jendela pratinjau"
-                className="p-2 rounded-full border border-border-subtle bg-surface-muted/60 text-text-primary hover:bg-accent-brand hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
+                className="p-2 border border-border-subtle bg-surface-muted text-text-primary hover:border-accent-brand hover:text-accent-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -107,7 +107,7 @@ export default function ImageModal({
               <button
                 type="button"
                 onClick={onClose}
-                className="px-4 py-1.5 rounded-lg bg-surface-muted hover:bg-accent-brand hover:text-white transition-colors font-medium"
+                className="px-4 py-1.5 bg-surface-muted border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors font-medium rounded-none"
               >
                 Tutup
               </button>

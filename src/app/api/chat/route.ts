@@ -59,7 +59,7 @@ ${contextText}`;
           const data = await res.json();
           const candidate = data?.candidates?.[0]?.content?.parts?.[0]?.text;
           if (candidate) {
-            assistantReply = candidate.replace(/—/g, '-').trim();
+            assistantReply = candidate.replace(/\u2014/g, '-').trim();
           }
         }
       } catch (err) {
@@ -73,7 +73,7 @@ ${contextText}`;
     }
 
     // Ensure strict Antislop compliance (no em dash)
-    assistantReply = assistantReply.replace(/—/g, '-');
+    assistantReply = assistantReply.replace(/\u2014/g, '-');
 
     return NextResponse.json({
       reply: assistantReply,

@@ -54,22 +54,22 @@ export default function PdfModal({
             aria-hidden="true"
           />
 
-          {/* Modal Container */}
+          {/* Modal Container with Sharp Edges */}
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 15 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="relative z-10 w-full max-w-5xl h-[92vh] max-h-[92vh] flex flex-col rounded-2xl bg-surface border border-border-subtle shadow-2xl overflow-hidden"
+            className="relative z-10 w-full max-w-5xl h-[92vh] max-h-[92vh] flex flex-col rounded-none bg-surface border-2 border-border-subtle shadow-2xl overflow-hidden"
           >
             {/* Modal Header */}
             <div className="flex items-center justify-between p-3.5 sm:p-4 md:p-5 border-b border-border-subtle bg-surface/95 backdrop-blur-sm gap-3">
               <div className="flex items-center space-x-3 overflow-hidden min-w-0 pr-2">
-                <div className="w-9 h-9 rounded-xl bg-accent-soft text-accent-brand flex items-center justify-center shrink-0 border border-border-subtle">
+                <div className="w-9 h-9 bg-accent-soft text-accent-brand flex items-center justify-center shrink-0 border border-border-subtle rounded-none">
                   <FileText className="w-5 h-5" />
                 </div>
                 <div className="space-y-0.5 overflow-hidden">
-                  <h3 className="font-bold text-sm sm:text-base md:text-lg text-text-primary line-clamp-1">
+                  <h3 className="font-extrabold text-sm sm:text-base md:text-lg text-text-primary line-clamp-1">
                     {title}
                   </h3>
                   {subtitle && (
@@ -86,7 +86,7 @@ export default function PdfModal({
                   href={pdfUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-surface hover:bg-surface-muted text-text-primary text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand"
+                  className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 border border-border-subtle bg-surface hover:border-accent-brand text-text-primary text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand rounded-none"
                   title="Buka dokumen di tab baru"
                 >
                   <span>Buka Tab Baru</span>
@@ -96,7 +96,7 @@ export default function PdfModal({
                 <a
                   href={pdfUrl}
                   download
-                  className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-lg border border-border-subtle bg-surface hover:bg-surface-muted text-text-primary text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand"
+                  className="hidden sm:inline-flex items-center space-x-1.5 px-3 py-1.5 border border-border-subtle bg-surface hover:border-accent-brand text-text-primary text-xs font-bold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-accent-brand rounded-none"
                   title="Unduh file dokumen PDF"
                 >
                   <span>Unduh PDF</span>
@@ -107,7 +107,7 @@ export default function PdfModal({
                   type="button"
                   onClick={onClose}
                   aria-label="Tutup jendela dokumen"
-                  className="p-2 rounded-full border border-border-subtle bg-surface-muted/60 text-text-primary hover:bg-accent-brand hover:text-white transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand ml-1"
+                  className="p-2 border border-border-subtle bg-surface-muted text-text-primary hover:border-accent-brand hover:text-accent-brand transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand ml-1 rounded-none"
                 >
                   <X className="w-5 h-5" />
                 </button>
@@ -130,42 +130,31 @@ export default function PdfModal({
                     href={pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 rounded-lg bg-accent-brand text-white font-medium text-sm"
+                    className="px-4 py-2 bg-accent-brand text-background font-bold text-xs rounded-none"
                   >
-                    Buka Dokumen PDF
+                    Buka PDF Langsung
                   </a>
                 </div>
               </noscript>
             </div>
 
-            {/* Modal Footer */}
-            <div className="p-3 sm:p-4 border-t border-border-subtle bg-surface/95 flex items-center justify-between text-xs text-text-muted">
-              <div className="flex items-center space-x-3">
-                <span className="hidden sm:inline">
-                  Gunakan fitur zoom dan scroll di dalam viewer dokumen untuk membaca selengkapnya.
-                </span>
-                <span className="sm:hidden">
-                  Tekan Esc atau tombol silang untuk menutup.
-                </span>
-              </div>
-
-              <div className="flex items-center space-x-2">
-                <a
-                  href={pdfUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="sm:hidden px-3 py-1.5 rounded-lg border border-border-subtle bg-surface hover:bg-surface-muted text-text-primary text-xs font-medium"
-                >
-                  Buka Tab Baru ↗
-                </a>
-                <button
-                  type="button"
-                  onClick={onClose}
-                  className="px-4 py-1.5 rounded-lg bg-surface-muted hover:bg-accent-brand hover:text-white transition-colors font-medium text-text-primary"
-                >
-                  Tutup
-                </button>
-              </div>
+            {/* Modal Mobile Actions Footer */}
+            <div className="sm:hidden p-3 border-t border-border-subtle bg-surface/95 flex items-center justify-between text-xs">
+              <a
+                href={pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 py-1.5 border border-border-subtle font-medium text-text-primary rounded-none"
+              >
+                Buka di Tab Baru ↗
+              </a>
+              <button
+                type="button"
+                onClick={onClose}
+                className="px-4 py-1.5 bg-accent-brand text-background font-bold rounded-none"
+              >
+                Tutup
+              </button>
             </div>
           </motion.div>
         </div>

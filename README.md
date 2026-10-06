@@ -1,71 +1,80 @@
-# Portofolio Riset & Pembangunan Daerah - Yuri Marisa
+# Portofolio Resmi AI Engineer & Software Developer: M. Sohibbal
 
-Website portofolio resmi untuk **Yuri Marisa**, mahasiswa program studi Ekonomi Pembangunan Fakultas Ekonomi dan Bisnis Universitas Riau (Semester 7), peneliti muda, dan pegiat organisasi kemahasiswaan.
+Website portofolio resmi untuk **M. Sohibbal**, mahasiswa program studi Teknik Informatika Fakultas Teknik Universitas Riau (IPK 3.81), AI / Machine Learning Engineer, MLOps Developer, dan peraih predikat ganda *Distinction Graduate* (Top 10%) program industri nasional DBS Foundation & Dicoding serta Accenture.
 
-Dibangun dengan **Next.js (App Router)**, **Tailwind CSS**, dan **Framer Motion**, dirancang siap untuk di-*deploy* langsung ke **Vercel** dengan performa tinggi dan tampilan estetis.
+Dibangun dengan **Next.js 14 (App Router)**, **TypeScript**, **Tailwind CSS**, dan **Framer Motion**, dirancang siap untuk di-*deploy* langsung ke **Vercel** dengan performa tinggi dan tampilan estetis beraksen **Orange TensorFlow** (`#FF6F00`).
 
 ---
 
 ## Fitur Utama
 
-- **Kinetic Monogram Loading Screen**: Animasi garis SVG path monogram "YM" dengan *reveal motion* halus saat pertama kali web dibuka (didukung *session storage guard*).
-- **Dual Theme (Light & Dark Mode)**: 
-  - **Light Mode (Default)**: Palet *Soft Slate & Ice Mist* terinspirasi langsung dari warna asli dokumen PDF Yuri Marisa dipadukan dengan aksen almamater UNRI Royal Blue (`#2563EB`).
-  - **Dark Mode**: Nuansa *Deep Midnight Slate* (`#090D16` & `#111827`) berlatar nyaman di mata dengan aksen Sky Blue (`#38BDF8`).
-- **Interactive Lightbox Modal**: Seluruh sertifikat dan foto dokumentasi kegiatan dapat diklik untuk melihat gambar dokumen ukuran penuh dengan kontrol tombol `Esc`, klik di luar *backdrop*, atau tombol Close.
-- **Showcase Riset & Publikasi Ilmiah**:
-  1. *Jurnal Sinergi*: Evaluasi Perencanaan Pembangunan Desa Berbasis IDM dan SDGs Desa (Studi Kasus RKPDes Desa Resam Lapis).
-  2. *Jurnal Strategia*: Pengaruh Pendidikan dan Kesehatan Terhadap Pembangunan Modal Manusia di Provinsi Riau Tahun 2015 : 2024.
-  3. *Jurnal Kapalamada*: Strategi Penguatan Agroindustri Sagu Kabupaten Kepulauan Meranti untuk Meningkatkan Daya Saing Produk Lokal.
-- **Pengalaman Lapangan & Kebijakan Publik**:
-  - Magang BAPPEDA Kabupaten Bengkalis (Bidang PPEPD - Verifikasi & Validasi Dokumen Renja 47 OPD, Rapat Wali Data lintas instansi).
-  - SELARAS WALHI Riau (Sekolah Keadilan Antar Generasi di Pulau Beting Aceh, Rupat Utara).
-- **8 Rekam Jejak Kepanitiaan, MC, dan Prestasi**: Filter kategori dinamis (Kepemimpinan, Kepanitiaan, Public Speaking, Dokumentasi, Prestasi).
-- **Saluran Kontak Siap Pakai**: Tombol langsung WhatsApp, salin alamat email dengan feedback instan, dan link Instagram.
-- **Standar Antislop & Aksesibilitas**: Bebas dari karakter em dash, bebas dari klaim/angka palsu, rasio kontras teks memenuhi WCAG AA, dan navigasi ramah keyboard.
+- **Floating RAG Chatbot Assistant (Kanan Bawah)**:
+  - Asisten cerdas berbasis Retrieval-Augmented Generation (RAG) di pojok kanan bawah.
+  - Menjawab pertanyaan seputar keahlian, riwayat mengajar, detail proyek, dan kontak secara akurat berdasarkan bank data dokumen resmi Sohibbal.
+  - Terintegrasi dengan Next.js API Route (`/api/chat`), Google Gemini API, dan *zero-downtime intelligent fallback*.
+  - Aksesibilitas keyboard penuh (tombol `Esc` untuk menutup drawer).
+- **Desain Geometris Sudut Runcing & Outline Tegas**:
+  - Seluruh kartu, container, modal, dan tombol menggunakan sudut runcing tegas (`rounded-none`), menciptakan nuansa *high-precision engineering aesthetic*.
+  - Efek *lighting glass* halus (`backdrop-blur-md`) dengan pantulan garis tepi (*border sheen*) saat interaksi.
+- **Kinetic Monogram Loading Screen**:
+  - Animasi garis SVG path monogram "MS" (*M. Sohibbal*) dengan warna oranye TensorFlow.
+  - Dilengkapi *session storage guard* agar transisi berlangsung cepat saat refresh.
+- **Dual Theme (Light & Dark Mode)**:
+  - **Light Mode**: Palet *Soft Slate Warm* (`#FBF8F3` & `#FFFFFF`) dengan teks kontras tinggi.
+  - **Dark Mode (Default)**: Nuansa *Deep Charcoal & Slate* (`#0B0F17` & `#111827`) berlatar nyaman di mata dengan aksen TensorFlow Orange (`#FF7043`).
+- **Hero Photo Deck dengan Orbiting Tech Stack**:
+  - Foto profil Sohibbal didampingi kartu mikro teknologi inti (*Python, TensorFlow, Docker, Next.js, Flutter, PostgreSQL*) yang mengorbit/melayang halus di sekeliling kartu.
+- **5 Featured AI & Software Projects**:
+  1. *MISTECH*: Platform edukasi mitigasi bencana untuk siswa SD (Flutter & REST API backend).
+  2. *INTELVIEW*: Sistem evaluasi wawancara otomatis berbasis multimodal AI (OpenCV, MediaPipe, YOLO).
+  3. *Corseo*: Sistem rekomendasi cerdas hybrid Neural Collaborative Filtering dan Content-Based Filtering (TensorFlow).
+  4. *SMART E-PPM*: Chatbot informasi berbasis Retrieval-Augmented Generation (RAG) untuk LPPM Universitas Riau.
+  5. *MLOps Obesity Classification*: Alur kerja machine learning end-to-end dengan optimasi GridSearch, Docker, Prometheus, dan Grafana.
+  - Setiap proyek dilengkapi pratinjau slide resolusi tinggi, badge peran, tautan langsung ke **GitHub Repo ↗**, **Live Deploy ↗**, dan **Modal Arsitektur Proyek**.
+- **Rekam Jejak Asisten Laboratorium & Pengalaman Industri**:
+  - Timeline vertikal pengalaman Asisten Lab AI dan Lab Basis Data UNRI, Software Engineer LPPM, Cohort AI DBS Foundation, Cohort ML Asah Accenture, serta Magang Home Credit.
+- **Sertifikasi & Penghargaan Resmi**:
+  - Lightbox modal untuk melihat sertifikat Distinction Graduate ganda dan sertifikasi pemodelan statistik.
+- **Jejak Akademik & Komunitas Teknologi**:
+  - Filter kategori dinamis (*Semua*, *Asisten Laboratorium*, *AI Cohort*, *Riset & Software*, *Workshop & Hackathon*).
+- **Saluran Kontak Siap Pakai**:
+  - Tombol langsung WhatsApp, salin alamat email dengan umpan balik visual, Instagram resmi (`@iib25_`), LinkedIn, dan GitHub.
+- **Standar Antislop & Aksesibilitas**:
+  - Bebas dari karakter em dash, bebas dari klaim/angka palsu, rasio kontras teks memenuhi WCAG AA, dan navigasi ramah keyboard.
 
 ---
 
-## Panduan Penempatan & Penggantian Aset Gambar
+## Struktur Folder Aset
 
-Semua gambar telah diekstrak secara otomatis dari file PDF portofolio asli dan tersimpan di dalam folder `public/images/`. Jika Anda ingin mengganti file gambar dengan resolusi yang lebih baru atau foto lainnya secara manual, silakan letakkan file dengan nama yang sama ke folder berikut:
+Semua aset gambar dan dokumen telah disusun rapi di dalam folder `public/`:
 
 ```
-public/images/
-├── hero/
-│   └── yuri-portrait.jpg        # Foto utama portrait Yuri (rasio 3:4)
-├── publications/
-│   ├── paper-sinergi.jpg        # Preview paper Jurnal Sinergi
-│   ├── paper-strategia.jpg      # Preview paper Jurnal Strategia
-│   └── paper-kapalamada.jpg     # Preview paper Jurnal Kapalamada
-├── experience/
-│   ├── bappeda/
-│   │   ├── bappeda-1.jpg        # Foto kegiatan dinas BAPPEDA
-│   │   └── bappeda-2.jpg        # Foto kantor / dokumen BAPPEDA
-│   └── walhi/
-│       ├── walhi-1.jpg          # Foto aksi pesisir Pulau Beting Aceh
-│       └── walhi-2.jpg          # Foto sosial warga Desa Suka Damai
-├── certificates/
-│   ├── lpii-unri.jpg            # Sertifikat Kepengurusan LPII FEB UNRI
-│   ├── bappeda-cert.jpg         # Sertifikat Magang BAPPEDA Bengkalis
-│   └── eviews-workshop.jpg      # Sertifikat Workshop Analisis Data EViews
-├── tools/
-│   ├── eviews.svg               # Icon EViews 12
-│   ├── excel.svg                # Icon Microsoft Excel
-│   ├── mendeley.svg             # Icon Mendeley
-│   ├── word.svg                 # Icon Microsoft Word
-│   ├── canva.svg                # Icon Canva
-│   └── capcut.svg               # Icon CapCut
-└── organizations/
-    ├── project-leader.jpg       # Foto Project Leader Proker Divisi
-    ├── ie-cup.jpg               # Foto CO Konsumsi IE Cup 2024
-    ├── fpvc-instinct8.jpg       # Foto Leader FPVC INSTINCT 8
-    ├── moderator-edov.jpg       # Foto Moderator Seminar EDOV 2024
-    ├── pesta-rakyat.jpg         # Foto Tim HID Pesta Rakyat IE
-    ├── mc-hmj.jpg               # Foto MC Pelantikan Pengurus HMJ
-    ├── instinct9.jpg            # Foto Leader Konsumsi INSTINCT 9
-    └── walhi-juara1.jpg         # Foto Juara 1 Sayembara Video WALHI
+public/
+├── cv.pdf                           # Berkas PDF resmi CV M. Sohibbal
+├── images/
+│   ├── hero/
+│   │   └── sohibbal-portrait.jpg    # Foto profil utama M. Sohibbal (rasio 3:4)
+│   ├── projects/
+│   │   ├── mistech.jpg              # Slide pratinjau proyek MiSTech
+│   │   ├── intelview.jpg            # Slide pratinjau proyek INTELVIEW
+│   │   ├── corseo.jpg               # Slide pratinjau proyek Corseo
+│   │   ├── smart-eppm.jpg           # Slide pratinjau proyek SMART E-PPM
+│   │   └── obesity-mlops.jpg        # Slide pratinjau proyek MLOps Obesity
+│   ├── certificates/                # Sertifikat resmi kelulusan & penghargaan
+│   └── organizations/               # Dokumentasi kegiatan asisten lab & cohort
 ```
+
+---
+
+## Konfigurasi Variabel Lingkungan (Opsional)
+
+Untuk mengaktifkan model LLM Google Gemini pada RAG Chatbot, Anda dapat menambahkan berkas `.env.local` di root proyek:
+
+```bash
+GEMINI_API_KEY=your_gemini_api_key_here
+```
+
+*Catatan: Jika `GEMINI_API_KEY` tidak diisi, chatbot otomatis beroperasi menggunakan mesin pencarian semantik lokal internal tanpa kendala (zero-downtime fallback).*
 
 ---
 
@@ -82,36 +91,24 @@ public/images/
    ```
    Buka peramban di [http://localhost:3000](http://localhost:3000).
 
-3. **Kompilasi Produksi (Production Build)**:
+3. **Kompilasi Produksi**:
    ```bash
    npm run build
    ```
 
 ---
 
-## Panduan Deploy ke Vercel (Siap Pakai)
+## Panduan Deploy ke Vercel
 
-Proyek ini telah dikonfigurasi secara optimal untuk Vercel:
-
-### Opsi A: Melalui GitHub (Paling Direkomendasikan)
-1. Buat repositori baru di akun GitHub Anda (misal: `yuri-marisa-portfolio`).
-2. Hubungkan dan push commit lokal ke GitHub:
+1. Hubungkan repositori ini ke akun GitHub Anda:
    ```bash
-   git remote add origin https://github.com/<username-anda>/yuri-marisa-portfolio.git
+   git add .
+   git commit -m "feat: complete M. Sohibbal portfolio overhaul"
+   git remote add origin https://github.com/Sohibbal/sohibbal-portfolio.git
    git branch -M main
    git push -u origin main
    ```
-3. Buka dashboard [Vercel](https://vercel.com/) $\rightarrow$ Klik **"Add New Project"**.
-4. Impor repositori GitHub tersebut. Vercel akan otomatis mendeteksi framework **Next.js**.
-5. Klik tombol **Deploy**. Dalam 1-2 menit website akan langsung aktif online dengan domain `.vercel.app` gratis atau custom domain Anda!
-
-### Opsi B: Melalui Vercel CLI
-1. Install Vercel CLI:
-   ```bash
-   npm install -g vercel
-   ```
-2. Jalankan perintah di terminal root proyek:
-   ```bash
-   vercel
-   ```
-3. Ikuti petunjuk singkat di layar untuk deploy instan.
+2. Buka dashboard [Vercel](https://vercel.com/) $\rightarrow$ Klik **"Add New Project"**.
+3. Impor repositori GitHub tersebut (Vercel otomatis mendeteksi framework **Next.js**).
+4. (Opsional) Tambahkan Environment Variable `GEMINI_API_KEY` di pengaturan Vercel.
+5. Klik **Deploy**. Website akan langsung aktif online!

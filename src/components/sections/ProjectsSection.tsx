@@ -39,23 +39,22 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
             <span>Arahkan kursor untuk menjeda slider</span>
           </div>
         </div>
-      </div>
 
-      {/* Full-width Slider Track with Edge Gradient Blur Vignette */}
-      <div className="relative w-full overflow-hidden marquee-container py-4">
-        {/* Left Edge Gradient Blur Fade */}
-        <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-16 sm:w-28 md:w-44 z-20 bg-gradient-to-r from-background via-background/85 to-transparent backdrop-blur-[2px]" />
+        {/* Compact Container-Bounded Slider Track with Edge Gradient Blur Vignette */}
+        <div className="relative w-full overflow-hidden marquee-container py-2">
+          {/* Left Edge Gradient Blur Fade */}
+          <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-20 bg-gradient-to-r from-background via-background/85 to-transparent backdrop-blur-[2px]" />
 
-        {/* Right Edge Gradient Blur Fade */}
-        <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-16 sm:w-28 md:w-44 z-20 bg-gradient-to-l from-background via-background/85 to-transparent backdrop-blur-[2px]" />
+          {/* Right Edge Gradient Blur Fade */}
+          <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-10 sm:w-16 md:w-24 z-20 bg-gradient-to-l from-background via-background/85 to-transparent backdrop-blur-[2px]" />
 
-        {/* Continuous Animated Marquee Track (Left to Right) */}
-        <div className="animate-marquee-ltr flex gap-6 lg:gap-8 px-4">
-          {duplicatedProjects.map((project, idx) => (
-            <div
-              key={`${project.id}-${idx}`}
-              className="w-[310px] sm:w-[350px] md:w-[380px] shrink-0 flex flex-col justify-between bg-surface border-2 border-border-subtle p-5 hover:border-accent-brand transition-all duration-200 group rounded-none shadow-sm select-none"
-            >
+          {/* Continuous Animated Marquee Track (Left to Right) */}
+          <div className="animate-marquee-ltr flex gap-6 lg:gap-8">
+            {duplicatedProjects.map((project, idx) => (
+              <div
+                key={`${project.id}-${idx}`}
+                className="w-[300px] sm:w-[340px] md:w-[360px] shrink-0 flex flex-col justify-between bg-surface border-2 border-border-subtle p-5 hover:border-accent-brand transition-all duration-200 group rounded-none shadow-sm select-none"
+              >
               <div className="space-y-4">
                 {/* Slide Preview Frame with Sharp Edges */}
                 <div
@@ -160,6 +159,7 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
           ))}
         </div>
       </div>
-    </section>
-  );
+    </div>
+  </section>
+);
 }

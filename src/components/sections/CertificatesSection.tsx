@@ -35,6 +35,63 @@ export default function CertificatesSection({ onSelectImage }: CertificatesSecti
     });
   };
 
+  // Komponen card terpadu agar ukuran tinggi, padding, frame gambar, dan scale di kedua mode 100% identik
+  const renderCertificateCard = (
+    cert: (typeof certificatesData)[0],
+    keySuffix?: string | number
+  ) => (
+    <div
+      key={keySuffix ? `${cert.id}-${keySuffix}` : cert.id}
+      onClick={() => handleCardClick(cert)}
+      className={`${
+        isSliderMode ? 'w-[310px] sm:w-[340px] lg:w-[360px] shrink-0' : 'w-full'
+      } flex flex-col justify-between bg-surface border-2 border-border-subtle p-6 hover:border-accent-brand transition-all duration-200 cursor-pointer group shadow-sm rounded-none select-none`}
+    >
+      <div className="space-y-4">
+        {/* Certificate Preview Frame (Tinggi h-48 dan scale presisi identik) */}
+        <div className="relative h-48 w-full bg-surface-muted border border-border-subtle overflow-hidden rounded-none">
+          <SafeImage
+            src={cert.image}
+            alt={cert.title}
+            fill
+            className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
+          />
+          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+            <span className="text-[11px] font-bold text-white px-3 py-1.5 bg-black/80 border border-white/20 rounded-none">
+              Perbesar &amp; Detail
+            </span>
+          </div>
+
+          {cert.badge && (
+            <div className="absolute top-2 right-2 px-2 py-0.5 bg-surface/95 backdrop-blur-md border border-border-subtle text-[10px] font-bold text-accent-brand rounded-none">
+              {cert.badge}
+            </div>
+          )}
+        </div>
+
+        <div className="space-y-1.5">
+          <p className="text-[11px] font-bold text-accent-brand uppercase tracking-wider">
+            {cert.date}
+          </p>
+          <h3 className="font-extrabold text-base text-text-primary leading-snug group-hover:text-accent-brand transition-colors">
+            {cert.title}
+          </h3>
+          <p className="text-xs font-semibold text-text-primary">
+            {cert.issuer}
+          </p>
+          <p className="text-xs text-text-muted leading-relaxed line-clamp-3 pt-1 font-normal">
+            {cert.description}
+          </p>
+        </div>
+      </div>
+
+      <div className="pt-4 mt-4 border-t border-border-subtle flex items-center justify-between text-xs font-bold text-text-primary group-hover:text-accent-brand transition-colors">
+        <span>Lihat Dokumen Asli</span>
+        <ArrowRight className="w-3.5 h-3.5" />
+      </div>
+    </div>
+  );
+
   return (
     <section id="sertifikat" className="pb-20 md:pb-28 bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 md:pt-28 border-t border-border-subtle">
@@ -87,56 +144,9 @@ export default function CertificatesSection({ onSelectImage }: CertificatesSecti
 
             {/* Continuous Animated Marquee Track */}
             <div className="animate-marquee-ltr flex gap-6 lg:gap-8">
-              {duplicatedCerts.map((cert, idx) => (
-                <div
-                  key={`${cert.id}-${idx}`}
-                  onClick={() => handleCardClick(cert)}
-                  className="w-[290px] sm:w-[320px] md:w-[350px] shrink-0 flex flex-col justify-between bg-surface border-2 border-border-subtle p-5 hover:border-accent-brand transition-all duration-200 cursor-pointer group shadow-sm rounded-none select-none"
-                >
-                  <div className="space-y-4">
-                    {/* Certificate Preview Frame */}
-                    <div className="relative h-44 w-full bg-surface-muted border border-border-subtle overflow-hidden rounded-none">
-                      <SafeImage
-                        src={cert.image}
-                        alt={cert.title}
-                        fill
-                        className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                        <span className="text-[11px] font-bold text-white px-3 py-1.5 bg-black/80 border border-white/20 rounded-none">
-                          Perbesar &amp; Detail
-                        </span>
-                      </div>
-
-                      {cert.badge && (
-                        <div className="absolute top-2 right-2 px-2 py-0.5 bg-surface/95 backdrop-blur-md border border-border-subtle text-[10px] font-bold text-accent-brand rounded-none">
-                          {cert.badge}
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="space-y-1.5">
-                      <p className="text-[11px] font-bold text-accent-brand uppercase tracking-wider">
-                        {cert.date}
-                      </p>
-                      <h3 className="font-extrabold text-sm sm:text-base text-text-primary leading-snug group-hover:text-accent-brand transition-colors line-clamp-1">
-                        {cert.title}
-                      </h3>
-                      <p className="text-xs font-semibold text-text-primary line-clamp-1">
-                        {cert.issuer}
-                      </p>
-                      <p className="text-xs text-text-muted leading-relaxed line-clamp-3 pt-0.5 font-normal">
-                        {cert.description}
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="pt-4 mt-4 border-t border-border-subtle flex items-center justify-between text-xs font-bold text-text-primary group-hover:text-accent-brand transition-colors">
-                    <span>Lihat Dokumen Asli</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </div>
-                </div>
-              ))}
+              {duplicatedCerts.map((cert, idx) =>
+                renderCertificateCard(cert, idx)
+              )}
             </div>
           </div>
         ) : (
@@ -147,56 +157,7 @@ export default function CertificatesSection({ onSelectImage }: CertificatesSecti
             transition={{ duration: 0.35 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
           >
-            {certificatesData.map((cert) => (
-              <div
-                key={cert.id}
-                onClick={() => handleCardClick(cert)}
-                className="flex flex-col justify-between bg-surface border-2 border-border-subtle p-6 hover:border-accent-brand transition-all duration-200 cursor-pointer group shadow-sm rounded-none"
-              >
-                <div className="space-y-4">
-                  {/* Certificate Preview Frame */}
-                  <div className="relative h-48 w-full bg-surface-muted border border-border-subtle overflow-hidden rounded-none">
-                    <SafeImage
-                      src={cert.image}
-                      alt={cert.title}
-                      fill
-                      className="object-contain p-2 group-hover:scale-105 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="text-[11px] font-bold text-white px-3 py-1.5 bg-black/80 border border-white/20 rounded-none">
-                        Perbesar &amp; Detail
-                      </span>
-                    </div>
-
-                    {cert.badge && (
-                      <div className="absolute top-2 right-2 px-2 py-0.5 bg-surface border border-border-subtle text-[10px] font-bold text-accent-brand rounded-none">
-                        {cert.badge}
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="space-y-1.5">
-                    <p className="text-[11px] font-bold text-accent-brand uppercase tracking-wider">
-                      {cert.date}
-                    </p>
-                    <h3 className="font-extrabold text-base text-text-primary leading-snug group-hover:text-accent-brand transition-colors">
-                      {cert.title}
-                    </h3>
-                    <p className="text-xs font-semibold text-text-primary">
-                      {cert.issuer}
-                    </p>
-                    <p className="text-xs text-text-muted leading-relaxed line-clamp-3 pt-1 font-normal">
-                      {cert.description}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="pt-4 mt-4 border-t border-border-subtle flex items-center justify-between text-xs font-bold text-text-primary group-hover:text-accent-brand transition-colors">
-                  <span>Lihat Dokumen Asli</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </div>
-              </div>
-            ))}
+            {certificatesData.map((cert) => renderCertificateCard(cert))}
           </motion.div>
         )}
       </div>

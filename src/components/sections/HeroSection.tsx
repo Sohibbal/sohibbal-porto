@@ -125,12 +125,20 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
           </motion.div>
         </div>
 
-        {/* 3-Metric Divider Row Below Hero */}
+        {/* =========================================================================
+            PANDUAN MENGATUR JARAK KE SECTION METRIK (5+ Proyek, Top 10%, 3.81 IPK):
+            - `mt-12 md:mt-16`: Mengatur jarak vertikal luar dari Hero/Foto ke garis batas metrik.
+              * Lebih rapat: `mt-8 md:mt-10` (32px / 40px)
+              * Sedang: `mt-12 md:mt-16` (48px / 64px)
+              * Lebih renggang: `mt-16 md:mt-24` (64px / 96px)
+              * Atau atur pixel pasti: `mt-[40px] md:mt-[60px]`
+            - `pt-8`: Mengatur jarak dari garis batas ke teks angka metrik (32px).
+            ========================================================================= */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.25 }}
-          className="mt-16 md:mt-24 pt-8 border-t border-border-subtle grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
+          className="mt-12 md:mt-16 pt-8 border-t border-border-subtle grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-0"
         >
           {/* Metric 1 */}
           <div className="md:pr-8 space-y-1">

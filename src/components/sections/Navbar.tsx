@@ -5,16 +5,16 @@ import { Menu, X } from 'lucide-react';
 import ThemeToggle from '@/components/ui/ThemeToggle';
 
 const navItems = [
-  { label: 'Keahlian', href: '#tentang' },
-  { label: 'Riset', href: '#riset' },
+  { label: 'Keahlian', href: '#keahlian' },
+  { label: 'Proyek', href: '#proyek' },
   { label: 'Pengalaman', href: '#pengalaman' },
   { label: 'Sertifikat', href: '#sertifikat' },
-  { label: 'Organisasi', href: '#organisasi' },
+  { label: 'Jejak', href: '#jejak' },
   { label: 'Kontak', href: '#kontak' },
 ];
 
 export default function Navbar() {
-  const [activeSection, setActiveSection] = useState('tentang');
+  const [activeSection, setActiveSection] = useState('keahlian');
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -64,21 +64,21 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Brand / Logo (Mirroring botku.id style) */}
+        {/* Brand / Logo */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="group flex items-center space-x-1 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-lg p-1"
+          className="group flex items-center space-x-1 text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand p-1 rounded-none"
         >
           <span className="font-extrabold text-lg tracking-tight text-text-primary group-hover:opacity-80 transition-opacity">
-            yurimarisa<span className="text-accent-brand pl-0 pr-2 py-1 sm:pl-0 sm:pr-2 sm:py-1 bg-surface-muted rounded-tl-xl rounded-br-xl">.porto</span>
+            sohibbal<span className="text-accent-brand px-1 py-0.5 bg-surface-muted border border-border-subtle ml-0.5">.porto</span>
           </span>
         </a>
 
-        {/* Desktop Navigation Links (Clean plain text links like style.png) */}
+        {/* Desktop Navigation Links */}
         <nav className="hidden md:flex items-center space-x-7 text-xs font-semibold text-text-muted">
           {navItems.map((item) => {
             const isActive = activeSection === item.href.substring(1);
@@ -88,7 +88,7 @@ export default function Navbar() {
                 href={item.href}
                 onClick={(e) => handleNavClick(e, item.href)}
                 className={`transition-colors hover:text-text-primary ${
-                  isActive ? 'text-text-primary font-bold' : ''
+                  isActive ? 'text-accent-brand font-bold' : ''
                 }`}
               >
                 {item.label}
@@ -97,14 +97,14 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right Action: Theme Switcher & Contact CTA (Mirroring style.png) */}
+        {/* Right Action: Theme Switcher & Contact CTA */}
         <div className="flex items-center space-x-3.5">
           <ThemeToggle />
 
           <a
             href="#kontak"
             onClick={(e) => handleNavClick(e, '#kontak')}
-            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold rounded-xl bg-accent-brand text-background hover:opacity-90 transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-accent-brand focus-visible:outline-none"
+            className="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs font-bold bg-accent-brand text-background hover:bg-accent-hover transition-all shadow-sm focus-visible:ring-2 focus-visible:ring-accent-brand focus-visible:outline-none rounded-none border border-accent-brand"
           >
             Hubungi
           </a>
@@ -114,7 +114,7 @@ export default function Navbar() {
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Tutup menu navigasi' : 'Buka menu navigasi'}
-            className="md:hidden p-2 rounded-lg border border-border-subtle bg-surface text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand"
+            className="md:hidden p-2 border border-border-subtle bg-surface text-text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -132,9 +132,9 @@ export default function Navbar() {
                   key={item.href}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className={`px-4 py-3 text-sm font-medium rounded-xl transition-colors ${
+                  className={`px-4 py-3 text-sm font-medium transition-colors rounded-none ${
                     isActive
-                      ? 'bg-surface-muted text-text-primary font-bold'
+                      ? 'bg-surface-muted text-accent-brand font-bold border-l-2 border-accent-brand'
                       : 'text-text-muted hover:bg-surface-muted hover:text-text-primary'
                   }`}
                 >
@@ -148,9 +148,9 @@ export default function Navbar() {
             <a
               href="#kontak"
               onClick={(e) => handleNavClick(e, '#kontak')}
-              className="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-bold rounded-xl bg-accent-brand text-background hover:opacity-90 transition-colors shadow-sm"
+              className="w-full inline-flex items-center justify-center px-4 py-3 text-sm font-bold bg-accent-brand text-background hover:bg-accent-hover transition-colors shadow-sm rounded-none border border-accent-brand"
             >
-              Hubungi Yuri Marisa
+              Hubungi M. Sohibbal
             </a>
           </div>
         </div>

@@ -81,8 +81,8 @@ export default function ProjectsSection({ onSelectProject }: ProjectsSectionProp
                     </span>
                   </div>
 
-                  {/* Sharp Corner Category Tag */}
-                  <div className="absolute top-2 left-2 px-2 py-0.5 bg-surface/95 backdrop-blur-md border border-border-subtle text-[10px] font-extrabold text-accent-brand rounded-none">
+                  {/* Sharp Corner Category Tag (Navy Background with Glass Blur) */}
+                  <div className="absolute top-2 left-2 px-2 py-0.5 bg-[#0A1329]/85 backdrop-blur-md border border-white/15 text-[10px] font-extrabold text-accent-brand rounded-none">
                     {project.category}
                   </div>
                 </div>

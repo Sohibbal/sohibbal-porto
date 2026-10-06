@@ -29,6 +29,7 @@ export default function HeroPhotoDeck() {
         {/* Portrait Image */}
         <SafeImage
           src="/images/hero/sohibbal-portrait.jpg"
+          fallbackSrc="/images/hero/sohibbal-potrait.jpg"
           alt="M. Sohibbal - AI Engineer & Software Developer"
           fill
           priority

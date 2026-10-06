@@ -16,24 +16,21 @@ export default function SafeImage({
   className = '',
   ...props
 }: SafeImageProps) {
+  const [currentSrc, setCurrentSrc] = useState(src);
   const [hasError, setHasError] = useState(false);
 
-  if (hasError) {
-    if (fallbackSrc) {
-      return (
-        <Image
-          {...props}
-          src={fallbackSrc}
-          alt={alt}
-          className={className}
-          onError={() => setHasError(true)}
-        />
-      );
+  const handleImageError = () => {
+    if (fallbackSrc && currentSrc !== fallbackSrc) {
+      setCurrentSrc(fallbackSrc);
+    } else {
+      setHasError(true);
     }
+  };
 
+  if (hasError) {
     return (
       <div
-        className={`flex flex-col items-center justify-center bg-surface-muted border border-border-subtle text-text-muted p-4 text-center rounded-xl ${className}`}
+        className={`flex flex-col items-center justify-center bg-surface-muted border border-border-subtle text-text-muted p-4 text-center rounded-none ${className}`}
       >
         <svg
           className="w-8 h-8 opacity-40 mb-2"
@@ -58,10 +55,10 @@ export default function SafeImage({
   return (
     <Image
       {...props}
-      src={src}
+      src={currentSrc}
       alt={alt}
       className={className}
-      onError={() => setHasError(true)}
+      onError={handleImageError}
     />
   );
 }

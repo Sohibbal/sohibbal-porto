@@ -1,0 +1,61 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #FBF8F3;
+  --surface: #FFFFFF;
+  --surface-muted: #F3ECE1;
+  --border-subtle: #E8E0D2;
+  --text-primary: #0A1329;
+  --text-muted: #4A576E;
+  --accent-brand: #0A1329;
+  --accent-hover: #1A284A;
+  --accent-soft: #EFE7DB;
+}
+
+.dark {
+  --background: #070D1D;
+  --surface: #0D162C;
+  --surface-muted: #13203E;
+  --border-subtle: #1D2E52;
+  --text-primary: #FBF8F3;
+  --text-muted: #94A6C2;
+  --accent-brand: #FBF8F3;
+  --accent-hover: #FFFFFF;
+  --accent-soft: #162447;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-sans), 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  letter-spacing: -0.015em;
+}
+
+/* Smooth Ease-in-out Theme Transition */
+html,
+body,
+header,
+footer,
+section,
+main,
+div,
+button,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+span {
+  transition-property: background-color, border-color, color, fill, stroke;
+  transition-duration: 400ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

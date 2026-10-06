@@ -1,0 +1,266 @@
+import {
+  PersonalProfile,
+  ToolItem,
+  Publication,
+  ExperienceItem,
+  CertificateItem,
+  OrganizationItem,
+  ContactInfo,
+} from '@/types/portfolio';
+
+export const personalData: PersonalProfile = {
+  name: 'Yuri Marisa',
+  role: 'Mahasiswa Ekonomi Pembangunan & Peneliti Muda',
+  university: 'Universitas Riau',
+  faculty: 'Fakultas Ekonomi dan Bisnis',
+  major: 'Ekonomi Pembangunan',
+  semester: 'Semester 7',
+  bio: 'Mahasiswa Universitas Riau program studi Ekonomi Pembangunan semester 7 dengan keahlian dalam riset penelitian, pengolahan data ekonometri, serta formulasi perencanaan pembangunan daerah. Memiliki rekam jejak publikasi artikel ilmiah pada jurnal nasional terakreditasi terkait dinamika ekonomi regional, modal manusia, dan pembangunan perdesaan. Didukung pengalaman magang di BAPPEDA Kabupaten Bengkalis dan keaktifan kepemimpinan organisasi kemahasiswaan.',
+  quote: 'Mengintegrasikan ketajaman riset ekonometri dengan advokasi kebijakan pembangunan daerah yang inklusif dan berkelanjutan.',
+  portraitImage: '/images/hero/yuri-portrait.jpg',
+};
+
+export const toolsData: ToolItem[] = [
+  {
+    name: 'EViews 12',
+    category: 'Analisis Ekonometri',
+    description: 'Regresi linier berganda, uji asumsi klasik, data panel, dan time-series untuk riset ekonomi.',
+    iconPath: '/images/tools/eviews.svg',
+    iconType: 'eviews',
+  },
+  {
+    name: 'Microsoft Excel',
+    category: 'Olah Data & Statistik',
+    description: 'Tabulasi data kuantitatif, analisis deskriptif, pemodelan tabel, dan visualisasi metrik ekonomi.',
+    iconPath: '/images/tools/excel.svg',
+    iconType: 'excel',
+  },
+  {
+    name: 'Mendeley',
+    category: 'Manajemen Sitasi',
+    description: 'Pengorganisasian literatur akademik, sitasi standar APA/IEEE, dan metadata bibliografi ilmiah.',
+    iconPath: '/images/tools/mendeley.svg',
+    iconType: 'mendeley',
+  },
+  {
+    name: 'Microsoft Word',
+    category: 'Penyusunan Naskah',
+    description: 'Format penulisan artikel jurnal ilmiah, laporan evaluasi kebijakan, dan dokumen perencanaan kerja.',
+    iconPath: '/images/tools/word.svg',
+    iconType: 'word',
+  },
+  {
+    name: 'Canva',
+    category: 'Desain Visual',
+    description: 'Penyusunan materi presentasi seminar riset, infografis publikasi, dan komunikasi visual terarah.',
+    iconPath: '/images/tools/canva.svg',
+    iconType: 'canva',
+  },
+  {
+    name: 'CapCut',
+    category: 'Media Kreatif',
+    description: 'Penyuntingan video dokumentasi edukatif, advokasi lingkungan, dan materi kreatif publik.',
+    iconPath: '/images/tools/capcut.svg',
+    iconType: 'capcut',
+  },
+];
+
+export const publicationsData: Publication[] = [
+  {
+    id: 'sinergi-resam-lapis',
+    title: 'Evaluasi Perencanaan Pembangunan Desa Berbasis IDM dan SDGs Desa: Studi Kasus RKPDes Desa Resam Lapis',
+    journal: 'Sinergi: Jurnal Riset Ilmiah',
+    category: 'Perencanaan Pembangunan Desa',
+    authors: [
+      'Yuri Marisa',
+      'Taryono',
+      'Wellyn Cesharing Meylan',
+      'Syakirah Athiyyah Fitri',
+      'Melani Noviantori Ramadhan',
+      'Renata Deliana',
+      'Naila Septa Ridhoni',
+    ],
+    abstract: 'Penelitian ini mengevaluasi keselarasan dokumen Rencana Kerja Pemerintah Desa (RKPDes) di Desa Resam Lapis terhadap indikator Indeks Desa Membangun (IDM) dan target Sustainable Development Goals (SDGs) Desa. Mengkaji implementasi alokasi anggaran dan prioritas pembangunan guna memastikan efektivitas kebijakan di tingkat lokal.',
+    focus: 'Evaluasi keselarasan perencanaan pembangunan berbasis data IDM dan capaian indikator SDGs Desa.',
+    previewImage: '/images/publications/paper-sinergi.jpg',
+    pdfUrl: '/documents/research/sinergi-resam-lapis.pdf',
+    year: '2026',
+  },
+  {
+    id: 'strategia-modal-manusia',
+    title: 'Pengaruh Pendidikan dan Kesehatan Terhadap Pembangunan Modal Manusia di Provinsi Riau Tahun 2015 : 2024',
+    journal: 'Strategia: Jurnal Manajemen dan Bisnis',
+    category: 'Ekonometri Regional',
+    authors: [
+      'Yuri Marisa',
+      'Naila Septa Ridhoni',
+      'B. Isyandi',
+      'Ufira Isbah',
+      'Dahlan Tampubolon',
+    ],
+    abstract: 'Menganalisis pengaruh variabel pendidikan (Rata-rata Lama Sekolah / RLS) dan kesehatan (Usia Harapan Hidup / UHH) terhadap Indeks Pembangunan Manusia (IPM/HDI) di Provinsi Riau periode 2015 sampai 2024. Penelitian mengaplikasikan metode regresi linier berganda menggunakan software EViews 12 berbasis data resmi Badan Pusat Statistik (BPS).',
+    focus: 'Regresi linier berganda EViews 12 membuktikan signifikansi simultan pendidikan dan kesehatan terhadap modal manusia regional.',
+    previewImage: '/images/publications/paper-strategia.jpg',
+    pdfUrl: '/documents/research/strategia-modal-manusia.pdf',
+    year: '2025',
+  },
+  {
+    id: 'kapalamada-agroindustri-sagu',
+    title: 'Strategi Penguatan Agroindustri Sagu Kabupaten Kepulauan Meranti untuk Meningkatkan Daya Saing Produk Lokal',
+    journal: 'KAPALAMADA: Jurnal Multidisipliner',
+    category: 'Ekonomi Agroindustri & Komoditas',
+    authors: [
+      'Yuri Marisa',
+      'Diva Tri Ramadani',
+      'Renata Deliana',
+      'Muhammad Bintang Anugrah',
+      'Eka Armay Pallis',
+    ],
+    abstract: 'Mengeksplorasi potensi hilirisasi dan rantai nilai komoditas sagu di Kabupaten Kepulauan Meranti sebagai produsen sagu terbesar di Riau. Merumuskan strategi intervensi kebijakan publik dan penguatan kelembagaan pelaku usaha guna mendongkrak daya saing serta nilai tambah ekonomi komoditas lokal di pasar nasional.',
+    focus: 'Analisis strategi rantai nilai komoditas unggulan daerah dan peningkatan nilai tambah produk turunan sagu.',
+    previewImage: '/images/publications/paper-kapalamada.jpg',
+    pdfUrl: '/documents/research/kapalamada-agroindustri-sagu.pdf',
+    year: '2025',
+  },
+];
+
+export const experiencesData: ExperienceItem[] = [
+  {
+    id: 'magang-bappeda-bengkalis',
+    organization: 'Badan Perencanaan Pembangunan Daerah (BAPPEDA) Kabupaten Bengkalis',
+    role: 'Praktikan Magang Bidang PPEPD',
+    period: 'Juli 2025',
+    location: 'Kabupaten Bengkalis, Riau',
+    description: [
+      'Melakukan verifikasi dan validasi kelengkapan dokumen Evaluasi Rencana Kerja (Renja) 47 Organisasi Perangkat Daerah (OPD) di lingkungan Pemerintah Kabupaten Bengkalis.',
+      'Mendukung persiapan teknis dan administrasi Rapat Wali Data, mengoordinasikan logistik forum kolaborasi data lintas instansi antara BAPPEDA, BPS, dan Diskominfo.',
+      'Mengelola administrasi kearsipan, penggandaan, dan distribusi dokumen strategis daerah guna memastikan kelancaran operasional harian Bidang Perencanaan, Pengendalian, dan Evaluasi Pembangunan Daerah (PPEPD).',
+    ],
+    images: [
+      '/images/experience/bappeda/bappeda-1.jpg',
+      '/images/experience/bappeda/bappeda-2.jpg',
+    ],
+    tags: ['Evaluasi Renja', 'Wali Data BAPPEDA', 'Validasi 47 OPD', 'Administrasi Kebijakan'],
+  },
+  {
+    id: 'selaras-walhi-riau',
+    organization: 'WALHI Riau (Wahana Lingkungan Hidup Indonesia)',
+    role: 'Peserta SELARAS (Sekolah Keadilan Antar Generasi)',
+    period: '14 : 17 Mei 2026',
+    location: 'Pulau Beting Aceh, Rupat Utara, Riau',
+    description: [
+      'Berpartisipasi aktif dalam pelatihan kepemimpinan lingkungan dan advokasi hak atas kelestarian ruang hidup di wilayah pesisir perbatasan Riau.',
+      'Melakukan analisis dampak perubahan iklim dan audit sampah pesisir bersama tim relawan di kawasan konservasi Pulau Beting Aceh.',
+      'Membangun interaksi sosial, dialog partisipatif, serta pemetaan potensi kearifan lokal bersama masyarakat Desa Suka Damai.',
+    ],
+    images: [
+      '/images/experience/walhi/walhi-1.jpg',
+      '/images/experience/walhi/walhi-2.jpg',
+    ],
+    tags: ['Advokasi Lingkungan', 'Audit Sampah', 'Kepemimpinan Iklim', 'Pemberdayaan Pesisir'],
+  },
+];
+
+export const certificatesData: CertificateItem[] = [
+  {
+    id: 'cert-lpii-unri',
+    title: 'Sertifikat Kepengurusan LPII FEB UNRI',
+    issuer: 'Lembaga Pengkajian Ilmiah dan Informasi FEB Universitas Riau',
+    date: '30 November 2025',
+    image: '/images/certificates/lpii-unri.jpg',
+    description: 'Sertifikat atas dedikasi dan kontribusi aktif sebagai Anggota Bagian Riset dan Kajian Lembaga Pengkajian Ilmiah dan Informasi FEB UNRI Periode 2024 : 2025.',
+  },
+  {
+    id: 'cert-magang-bappeda',
+    title: 'Sertifikat Magang BAPPEDA Kabupaten Bengkalis',
+    issuer: 'Pemerintah Kabupaten Bengkalis (BAPPEDA)',
+    date: 'Juli 2025',
+    image: '/images/certificates/bappeda-cert.jpg',
+    description: 'Sertifikat kelulusan Praktik Magang pada Bidang Perencanaan, Pengendalian, dan Evaluasi Pembangunan Daerah (PPEPD) dengan evaluasi kinerja berpredikat BAIK.',
+  },
+  {
+    id: 'cert-workshop-eviews',
+    title: 'Sertifikat Peserta Workshop Penggunaan EViews',
+    issuer: 'Laboratorium Penelitian Ekonomi dan Bisnis FEB Universitas Riau',
+    date: '14 Agustus 2024',
+    image: '/images/certificates/eviews-workshop.jpg',
+    description: 'Sertifikat peserta resmi Workshop Penggunaan Software Analisis Data EViews: Enhancing Research Skill with EViews untuk pengolahan ekonometri terapan.',
+  },
+];
+
+export const organizationsData: OrganizationItem[] = [
+  {
+    id: 'org-1',
+    role: 'Project Leader',
+    event: 'Salah Satu Program Kerja Divisi',
+    year: '2024',
+    image: '/images/organizations/project-leader.jpg',
+    category: 'Kepemimpinan',
+  },
+  {
+    id: 'org-2',
+    role: 'Koordinator (CO) Konsumsi',
+    event: 'IE Cup 2024',
+    year: '2024',
+    image: '/images/organizations/ie-cup.jpg',
+    category: 'Kepanitiaan',
+  },
+  {
+    id: 'org-3',
+    role: 'Leader of FPVC',
+    event: 'INSTINCT 8',
+    year: '2024',
+    image: '/images/organizations/fpvc-instinct8.jpg',
+    category: 'Kepemimpinan',
+  },
+  {
+    id: 'org-4',
+    role: 'Moderator Seminar',
+    event: 'ICON X EDOV Festival 2024',
+    year: '2024',
+    image: '/images/organizations/moderator-edov.jpg',
+    category: 'Public Speaking',
+  },
+  {
+    id: 'org-5',
+    role: 'Anggota HID',
+    event: 'Pesta Rakyat IE 2024',
+    year: '2024',
+    image: '/images/organizations/pesta-rakyat.jpg',
+    category: 'Dokumentasi',
+  },
+  {
+    id: 'org-6',
+    role: 'Master of Ceremony (MC)',
+    event: 'Pelantikan Pengurus HMJ IE 2025',
+    year: '2025',
+    image: '/images/organizations/mc-hmj.jpg',
+    category: 'Public Speaking',
+  },
+  {
+    id: 'org-7',
+    role: 'Leader of Consumption',
+    event: 'INSTINCT 9',
+    year: '2025',
+    image: '/images/organizations/instinct9.jpg',
+    category: 'Kepanitiaan',
+  },
+  {
+    id: 'org-8',
+    role: 'Juara 1 Sayembara Video Kreatif',
+    event: 'WALHI Riau',
+    year: '2024',
+    image: '/images/organizations/walhi-juara1.jpg',
+    category: 'Prestasi',
+  },
+];
+
+export const contactData: ContactInfo = {
+  whatsapp: '+6285374355652',
+  whatsappDisplay: '+62 853-7435-5652',
+  whatsappLink: 'https://wa.me/6285374355652?text=Halo%20Yuri%20Marisa%2C%20saya%20tertarik%20untuk%20berdiskusi%20mengenai%20portofolio%20dan%20riset%20Anda.',
+  email: 'yuri.marisa1059@student.unri.ac.id',
+  instagram: '@yuriiiee__',
+  instagramLink: 'https://instagram.com/yuriiiee__',
+  location: 'Pekanbaru, Riau, Indonesia',
+};

@@ -14,15 +14,35 @@ const techBadges = [
   { name: 'PostgreSQL', role: 'Data Integrity', pos: '-bottom-6 left-6 sm:left-10', duration: 8.2, delay: 2.2 },
 ];
 
-export default function HeroPhotoDeck() {
+interface HeroPhotoDeckProps {
+  className?: string;
+  /**
+   * Mengatur tinggi frame foto profil.
+   * Default: 'h-[340px] sm:h-[375px] lg:h-[385px]' (diselaraskan dengan tinggi teks di sampingnya).
+   */
+  heightClass?: string;
+  /**
+   * Mengatur lebar frame foto profil.
+   * Default: 'w-[260px] sm:w-[285px] lg:w-[295px]' (menjaga rasio potret proporsional).
+   */
+  widthClass?: string;
+}
+
+export default function HeroPhotoDeck({
+  className = '',
+  heightClass = 'h-[340px] sm:h-[375px] lg:h-[385px]',
+  widthClass = 'w-[260px] sm:w-[285px] lg:w-[295px]',
+}: HeroPhotoDeckProps) {
   return (
     <div
-      className="relative flex flex-col items-center justify-center w-full max-w-[340px] sm:max-w-[380px] py-8 select-none"
+      className={`relative flex flex-col items-center justify-center py-4 select-none ${className}`}
       role="region"
       aria-label="Foto Profil M. Sohibbal dengan Tech Stack Interaktif"
     >
       {/* Central Sharp Portrait Frame */}
-      <div className="relative w-full aspect-[3/4] bg-surface border-2 border-border-subtle shadow-xl rounded-none overflow-hidden group">
+      <div
+        className={`relative ${widthClass} ${heightClass} bg-surface border-2 border-border-subtle shadow-xl rounded-none overflow-hidden group`}
+      >
         {/* Background ambient corner accent */}
         <div className="absolute top-0 right-0 w-24 h-24 bg-accent-soft/30 -z-0 pointer-events-none" />
 

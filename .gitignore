@@ -3,6 +3,8 @@ node_modules/
 out/
 build/
 .superpowers/
+.env
+.env.local
 .env*.local
 .DS_Store
 *.log

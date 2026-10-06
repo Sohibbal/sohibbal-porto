@@ -137,7 +137,6 @@ export default function ChatBotDrawer() {
         >
           <div className="relative">
             <Bot className="w-5 h-5 text-accent-brand group-hover:text-background transition-colors" />
-            <span className="absolute -top-1 -right-1 w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
           </div>
           <span className="text-xs font-bold tracking-tight uppercase">
             Tanya AI

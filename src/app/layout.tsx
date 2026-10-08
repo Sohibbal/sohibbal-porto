@@ -10,8 +10,8 @@ const plusJakartaSans = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "M. Sohibbal • AI Engineer & Software Developer Portfolio",
-  description: "Portofolio resmi M. Sohibbal: Mahasiswa Teknik Informatika Universitas Riau (IPK 3.81), AI / Machine Learning Engineer, MLOps, dan Fullstack Developer.",
+  title: "Sohibbal",
+  description: "Portofolio M. Sohibbal",
   keywords: ["M. Sohibbal", "Sohibbal", "AI Engineer", "Machine Learning", "Universitas Riau", "MLOps", "TensorFlow", "Next.js", "Flutter", "RAG"],
   authors: [{ name: "M. Sohibbal" }],
   icons: {

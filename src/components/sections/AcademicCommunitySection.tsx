@@ -11,10 +11,12 @@ interface AcademicCommunitySectionProps {
     title: string;
     subtitle?: string;
     description?: string;
+    link?: string;
+    linkText?: string;
   }) => void;
 }
 
-const categories = ['Semua', 'Asisten Laboratorium', 'AI Cohort', 'Riset & Software', 'Workshop & Hackathon'];
+const categories = ['Semua', 'Riset & Software', 'Asisten Laboratorium', 'AI Cohort'];
 
 export default function AcademicCommunitySection({ onSelectImage }: AcademicCommunitySectionProps) {
   const [activeCategory, setActiveCategory] = useState('Semua');
@@ -74,6 +76,8 @@ export default function AcademicCommunitySection({ onSelectImage }: AcademicComm
                   title: `${item.role} : ${item.event}`,
                   subtitle: `Tahun ${item.year} • Kategori ${item.category}`,
                   description: item.description,
+                  link: item.link,
+                  linkText: item.link ? 'Buka Artikel Jurnal Ilmiah (SYSTEC UNRI)' : undefined,
                 })
               }
               className="flex flex-col bg-surface border-2 border-border-subtle overflow-hidden cursor-pointer group hover:border-accent-brand transition-all duration-200 shadow-sm rounded-none"
@@ -116,7 +120,7 @@ export default function AcademicCommunitySection({ onSelectImage }: AcademicComm
                 </div>
 
                 <div className="pt-2 border-t border-border-subtle flex items-center justify-between text-[11px] text-text-primary font-bold group-hover:text-accent-brand transition-colors">
-                  <span>Lihat Dokumentasi</span>
+                  <span>{item.link ? 'Baca Publikasi Jurnal' : 'Lihat Dokumentasi'}</span>
                   <span>→</span>
                 </div>
               </div>

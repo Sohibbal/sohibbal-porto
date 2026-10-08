@@ -2,7 +2,7 @@
 
 import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ZoomIn } from 'lucide-react';
+import { X, ZoomIn, ExternalLink } from 'lucide-react';
 import SafeImage from './SafeImage';
 
 interface ImageModalProps {
@@ -12,6 +12,8 @@ interface ImageModalProps {
   title: string;
   subtitle?: string;
   description?: string;
+  link?: string;
+  linkText?: string;
 }
 
 export default function ImageModal({
@@ -21,6 +23,8 @@ export default function ImageModal({
   title,
   subtitle,
   description,
+  link,
+  linkText,
 }: ImageModalProps) {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -102,13 +106,27 @@ export default function ImageModal({
 
             {/* Modal Description & Details (Keterangan Lengkap Sesuai Card) */}
             {description && (
-              <div className="p-4 sm:p-6 border-t border-border-subtle bg-surface-muted/30 space-y-2">
+              <div className="p-4 sm:p-6 border-t border-border-subtle bg-surface-muted/30 space-y-3">
                 <h4 className="text-[11px] font-bold uppercase tracking-wider text-accent-brand">
                   Keterangan &amp; Deskripsi
                 </h4>
                 <p className="text-xs sm:text-sm text-text-primary leading-relaxed font-normal">
                   {description}
                 </p>
+
+                {link && (
+                  <div className="pt-2">
+                    <a
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center space-x-2 px-3.5 py-2 bg-accent-brand text-background text-xs font-bold hover:bg-accent-hover transition-colors rounded-none shadow-sm"
+                    >
+                      <span>{linkText || 'Buka Artikel Jurnal Ilmiah'}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
+                  </div>
+                )}
               </div>
             )}
 

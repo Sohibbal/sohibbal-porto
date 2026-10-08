@@ -1,7 +1,7 @@
 export interface KnowledgeChunk {
   id: string;
   title: string;
-  category: 'profile' | 'projects' | 'experience' | 'skills' | 'contact';
+  category: 'profile' | 'projects' | 'experience' | 'skills' | 'contact' | 'research';
   keywords: string[];
   content: string;
 }
@@ -57,14 +57,21 @@ export const sohibbalKnowledgeChunks: KnowledgeChunk[] = [
     content: `Sohibbal dipercaya sebagai Asisten Laboratorium Kecerdasan Buatan (Lab AI) di Universitas Riau (2026 - sekarang) membimbing mahasiswa dalam pemahaman algoritma AI, konsep machine learning, dan evaluasi kode praktikum. Sebelumnya ia juga menjadi Asisten Laboratorium Basis Data (Lab DB) UNRI (2026) membimbing praktikum perancangan skema relasional, pemodelan ER, normalisasi tabel, dan SQL query.`,
   },
   {
+    id: 'research-cv-systec',
+    title: 'Publikasi Riset Computer Vision (Jurnal SYSTEC UNRI)',
+    category: 'research',
+    keywords: ['riset', 'penelitian', 'jurnal', 'systec', 'cifake', 'cnn', 'efficientnet', 'vision transformer', 'vit', 'computer vision', 'deep learning', 'data mining', 'unri'],
+    content: `Sebagai salah satu luaran mata kuliah Data Mining (2026), M. Sohibbal bersama tim melakukan riset komparatif bertajuk "Perbandingan Kinerja Model CNN EfficientNetB0 dan Vision Transformer Untuk Klasifikasi Citra Real-Fake" yang dipublikasikan pada Journal of System & Technology (SYSTEC) UNRI Vol. 2 No. 1 (2026). Penelitian ini menguji 120.000 citra pada dataset CIFAKE (citra asli CIFAR-10 vs citra AI sintetis Stable Diffusion v1.4). Hasil riset menunjukkan bahwa Vision Transformer (ViT) mencapai akurasi 97,15% dengan precision dan recall seimbang di atas 97%, mengungguli EfficientNetB0 (akurasi 84,79%). Tautan publikasi resmi: https://systec.ejournal.unri.ac.id/index.php/systec/article/view/48.`,
+  },
+  {
     id: 'experience-cohorts',
     title: 'Prestasi Cohort Industri & Penghargaan',
     category: 'experience',
-    keywords: ['prestasi', 'penghargaan', 'distinction', 'top 10', 'dbs', 'accenture', 'dicoding', 'yandex', 'digitalent', 'home credit', 'sertifikat'],
+    keywords: ['prestasi', 'penghargaan', 'distinction', 'top 10', 'dbs', 'accenture', 'dicoding', 'yandex', 'digitalent', 'home credit', 'sertifikat', 'basis data'],
     content: `Sohibbal mencatatkan pencapaian ganda sebagai Distinction Graduate (Top 10% lulusan terbaik):
 1. Coding Camp powered by DBS Foundation & Dicoding (2026): Top 10% dari 700+ peserta program AI Engineer.
 2. Program Asah Led by Dicoding with Accenture (2025): Top 10% dari 1.000+ peserta program Machine Learning.
-Selain itu, ia menyelesaikan program spesialisasi pemodelan regresi linier Yandex & Digitalent Scholarship Kominfo (2025) serta magang berbasis proyek di Home Credit Indonesia (2025) membangun model prediktif credit scoring.`,
+Selain itu, ia mengantongi sertifikat resmi Asisten Laboratorium Basis Data Lanjut UNRI (2026), menyelesaikan pelatihan spesialisasi pemodelan regresi linier Yandex & Digitalent Scholarship Kominfo (2025), serta menyelesaikan program Data Scientist Project-Based Internship di Home Credit Indonesia dengan nilai akhir 89.34 (Predikat Excellent).`,
   },
   {
     id: 'skills',

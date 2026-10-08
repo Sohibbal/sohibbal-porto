@@ -20,7 +20,7 @@ export interface ExperienceItem {
   period: string;
   location?: string;
   description: string[];
-  images: string[];
+  images?: string[];
   tags: string[];
 }
 
@@ -42,6 +42,7 @@ export interface AcademicCommunityItem {
   image: string;
   category: 'Asisten Laboratorium' | 'AI Cohort' | 'Riset & Software' | 'Workshop & Hackathon';
   description: string;
+  link?: string;
 }
 
 export interface ToolItem {

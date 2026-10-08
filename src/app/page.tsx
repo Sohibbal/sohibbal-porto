@@ -24,12 +24,16 @@ export default function Home() {
     title: string;
     subtitle?: string;
     description?: string;
+    link?: string;
+    linkText?: string;
   }>({
     isOpen: false,
     imageSrc: '',
     title: '',
     subtitle: '',
     description: '',
+    link: undefined,
+    linkText: undefined,
   });
 
   const [pdfModalState, setPdfModalState] = useState<{
@@ -51,6 +55,8 @@ export default function Home() {
     title: string;
     subtitle?: string;
     description?: string;
+    link?: string;
+    linkText?: string;
   }) => {
     setModalState({
       isOpen: true,
@@ -58,6 +64,8 @@ export default function Home() {
       title: image.title,
       subtitle: image.subtitle,
       description: image.description,
+      link: image.link,
+      linkText: image.linkText,
     });
   };
 
@@ -108,6 +116,8 @@ export default function Home() {
         title={modalState.title}
         subtitle={modalState.subtitle}
         description={modalState.description}
+        link={modalState.link}
+        linkText={modalState.linkText}
       />
 
       {/* 6. PDF Document Modal for CV */}

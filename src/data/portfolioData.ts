@@ -194,7 +194,6 @@ export const experiencesData: ExperienceItem[] = [
       'Memfasilitasi sesi praktikum laboratorium AI yang mencakup konsep dasar kecerdasan buatan, algoritma pencarian, dan dasar-dasar machine learning.',
       'Membimbing mahasiswa dalam implementasi kode serta mengevaluasi penugasan praktikum mingguan dan proyek akhir.',
     ],
-    images: ['/images/experience/bappeda/bappeda-1.jpg', '/images/experience/bappeda/bappeda-2.jpg'],
     tags: ['Artificial Intelligence', 'Machine Learning', 'Mentoring Praktikum', 'Evaluasi Kode'],
   },
   {
@@ -207,7 +206,6 @@ export const experiencesData: ExperienceItem[] = [
       'Terpilih sebagai salah satu peserta program intensif rekayasa AI nasional dan meraih predikat Distinguished Graduate (Top 10% dari 700+ peserta).',
       'Menyelesaikan kurikulum mendalam mencakup deep learning, pemodelan neural network, dan kustomisasi praktis arsitektur AI.',
     ],
-    images: ['/images/experience/walhi/walhi-1.jpg', '/images/experience/walhi/walhi-2.jpg'],
     tags: ['Deep Learning', 'Neural Networks', 'Distinction Graduate', 'Top 10%'],
   },
   {
@@ -220,7 +218,6 @@ export const experiencesData: ExperienceItem[] = [
       'Memfasilitasi praktikum basis data relasional, pemodelan Entity-Relationship (ER), penulisan query SQL, dan normalisasi tabel.',
       'Membimbing penyusunan arsitektur basis data untuk tugas akhir mahasiswa praktikum.',
     ],
-    images: ['/images/experience/bappeda/bappeda-1.jpg', '/images/experience/bappeda/bappeda-2.jpg'],
     tags: ['SQL', 'Relational Database', 'Database Normalization', 'ER Modeling'],
   },
   {
@@ -233,7 +230,6 @@ export const experiencesData: ExperienceItem[] = [
       'Merancang dan membangun chatbot informasi berbasis Retrieval-Augmented Generation (RAG) untuk sistem informasi E-PPM.',
       'Mengintegrasikan model bahasa dengan repositori dokumen panduan akademik guna menyajikan informasi pengumuman yang akurat.',
     ],
-    images: ['/images/experience/walhi/walhi-1.jpg', '/images/experience/walhi/walhi-2.jpg'],
     tags: ['Retrieval-Augmented Generation', 'Document Processing', 'Chatbot Engineering'],
   },
   {
@@ -246,7 +242,6 @@ export const experiencesData: ExperienceItem[] = [
       'Meraih predikat Distinguished Graduate (Top 10% dari 1.000+ peserta) dalam pelatihan intensif machine learning dan MLOps.',
       'Mempelajari alur machine learning komprehensif mulai dari exploratory data analysis, rekayasa fitur, pemodelan, hingga deployment.',
     ],
-    images: ['/images/experience/bappeda/bappeda-1.jpg', '/images/experience/bappeda/bappeda-2.jpg'],
     tags: ['Machine Learning', 'Data Preprocessing', 'MLOps', 'Top 10% Graduate'],
   },
   {
@@ -259,7 +254,6 @@ export const experiencesData: ExperienceItem[] = [
       'Membangun model credit scoring prediktif menggunakan data historis nasabah untuk mengukur kelayakan kredit dan mitigasi risiko.',
       'Melakukan analisis data kuantitatif untuk mendukung pengambilan keputusan pinjaman berbasis data yang objektif.',
     ],
-    images: ['/images/experience/walhi/walhi-1.jpg', '/images/experience/walhi/walhi-2.jpg'],
     tags: ['Credit Scoring', 'Risk Assessment', 'Predictive Modeling', 'Financial Data'],
   },
 ];
@@ -275,6 +269,15 @@ export const certificatesData: CertificateItem[] = [
     badge: 'Top 10% Cohort',
   },
   {
+    id: 'cert-lab-db',
+    title: 'Asisten Laboratorium Basis Data Lanjut',
+    issuer: 'Jurusan Teknik Elektro & Prodi Teknik Informatika UNRI',
+    date: '2026',
+    image: '/images/certificates/asisten-lab-basis-data.jpg',
+    description: 'Sertifikat penghargaan resmi No. 788/UN19.5.1.1.7/JTE/DL/2026 atas kontribusi sebagai Asisten Laboratorium mata kuliah Basis Data Lanjut periode Genap 2025/2026.',
+    badge: 'Asisten Lab Resmi',
+  },
+  {
     id: 'cert-asah',
     title: 'Distinguished Graduate - Machine Learning Cohort',
     issuer: 'Asah Led by Dicoding with Accenture',
@@ -282,6 +285,15 @@ export const certificatesData: CertificateItem[] = [
     image: '/images/certificates/asah.png',
     description: 'Kelulusan predikat Top 10% dari 1.000+ peserta pada pelatihan machine learning engineering, data preprocessing, dan MLOps.',
     badge: 'Top 10% Graduate',
+  },
+  {
+    id: 'cert-home-credit',
+    title: 'Data Scientist Project-Based Internship',
+    issuer: 'Home Credit Indonesia & Rakamin Academy',
+    date: '2025',
+    image: '/images/certificates/home-credit.jpg',
+    description: 'Penyelesaian program intensif Data Scientist Project Based Internship dengan nilai akhir 89.34 (Predikat Excellent), mencakup Machine Learning, Programming Language, dan Business Acumen.',
+    badge: 'Score 89.34 - Excellent',
   },
   {
     id: 'cert-yandex',
@@ -296,11 +308,21 @@ export const certificatesData: CertificateItem[] = [
 
 export const academicCommunityData: AcademicCommunityItem[] = [
   {
+    id: 'comm-research-cv',
+    role: 'Research Computer Vision',
+    event: 'Perbandingan Model CNN EfficientNetB0 & ViT (Jurnal SYSTEC UNRI)',
+    year: '2026',
+    image: '/images/organizations/research-computer-vision.jpg',
+    category: 'Riset & Software',
+    description: 'Output mata kuliah Data Mining: riset komparatif kinerja arsitektur CNN (EfficientNetB0) dan Vision Transformer (ViT) dalam klasifikasi citra sintetis pada dataset CIFAKE (120.000 citra). ViT mencapai akurasi 97,15% mengungguli CNN, dipublikasikan pada Journal of System & Technology (SYSTEC) UNRI.',
+    link: 'https://systec.ejournal.unri.ac.id/index.php/systec/article/view/48',
+  },
+  {
     id: 'comm-lab-ai',
     role: 'Asisten Laboratorium',
     event: 'Praktikum Kecerdasan Buatan (Lab AI UNRI)',
     year: '2026',
-    image: '/images/organizations/project-leader.jpg',
+    image: '/images/organizations/praktikum-kecerdasan-buatan.jpg',
     category: 'Asisten Laboratorium',
     description: 'Membimbing mahasiswa dalam eksplorasi algoritma machine learning dan implementasi model terapan di laboratorium.',
   },
@@ -309,7 +331,7 @@ export const academicCommunityData: AcademicCommunityItem[] = [
     role: 'Asisten Laboratorium',
     event: 'Praktikum Basis Data Relasional & SQL (Lab DB UNRI)',
     year: '2026',
-    image: '/images/organizations/moderator-edov.jpg',
+    image: '/images/organizations/praktikum-basis-data.jpg',
     category: 'Asisten Laboratorium',
     description: 'Mengajar pemodelan relasional, normalisasi skema basis data, dan teknik penulisan query SQL efisien.',
   },
@@ -318,7 +340,7 @@ export const academicCommunityData: AcademicCommunityItem[] = [
     role: 'Distinguished Participant',
     event: 'Coding Camp DBS Foundation AI Engineering',
     year: '2026',
-    image: '/images/organizations/fpvc-instinct8.jpg',
+    image: '/images/organizations/coding-camp-2026.png',
     category: 'AI Cohort',
     description: 'Mengikuti program akselerasi AI nasional dan berkontribusi dalam diskusi pemodelan arsitektur deep learning.',
   },
@@ -327,7 +349,7 @@ export const academicCommunityData: AcademicCommunityItem[] = [
     role: 'Distinguished Participant',
     event: 'Program Asah Dicoding & Accenture ML Cohort',
     year: '2025',
-    image: '/images/organizations/ie-cup.jpg',
+    image: '/images/organizations/asah-2025.jpg',
     category: 'AI Cohort',
     description: 'Kolaborasi aktif dalam penyelesaian capstone machine learning dan praktik MLOps bersertifikasi industri.',
   },
@@ -336,18 +358,9 @@ export const academicCommunityData: AcademicCommunityItem[] = [
     role: 'Software Engineer',
     event: 'Pengembangan Chatbot RAG LPPM Universitas Riau',
     year: '2025',
-    image: '/images/organizations/pesta-rakyat.jpg',
+    image: '/images/organizations/software-eng-lppm.jpg',
     category: 'Riset & Software',
     description: 'Berkolaborasi dengan pimpinan dan staf LPPM UNRI dalam integrasi sistem informasi layanan penelitian kampus.',
-  },
-  {
-    id: 'comm-yandex-hackathon',
-    role: 'Peserta Mini Hackathon',
-    event: 'Linear Regression Program Yandex & Kominfo',
-    year: '2025',
-    image: '/images/organizations/walhi-juara1.jpg',
-    category: 'Workshop & Hackathon',
-    description: 'Merancang model regresi linier prediktif dan mempresentasikan hasil pemodelan dalam sesi mini hackathon.',
   },
 ];
 

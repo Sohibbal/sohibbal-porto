@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Linkedin } from 'lucide-react';
+import { FileText, Github, Linkedin } from 'lucide-react';
 import HeroPhotoDeck from '@/components/sections/HeroPhotoDeck';
 import { contactData } from '@/data/portfolioData';
 
@@ -91,9 +91,11 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
                     window.open('/cv.pdf', '_blank');
                   }
                 }}
-                className="px-6 py-3.5 bg-accent-brand text-background font-bold text-sm hover:bg-accent-hover shadow-sm transition-all duration-200 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none border border-accent-brand"
+                className="px-5 py-3.5 bg-accent-brand text-background font-bold text-sm hover:bg-accent-hover shadow-sm transition-all duration-200 flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none border border-accent-brand"
+                aria-label="Buka Curriculum Vitae M. Sohibbal"
               >
-                <span>Lihat CV ↗</span>
+                <FileText className="w-4 h-4 shrink-0" />
+                <span>CV ↗</span>
               </button>
 
               <a

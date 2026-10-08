@@ -453,19 +453,21 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Prompt Chips (1 Baris Memanjang ke Kanan & Scroll Horizontal) */}
-              <div className="px-3 py-2 bg-surface border-t border-border-subtle flex items-center space-x-2 horizontal-scroll-chips">
-                {quickPrompts.map((prompt, idx) => (
-                  <button
-                    key={idx}
-                    type="button"
-                    onClick={() => handleSendMessage(prompt)}
-                    disabled={isLoading || isTyping}
-                    className="shrink-0 whitespace-nowrap text-[11px] px-2.5 py-1 bg-surface-muted text-text-primary border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors text-left disabled:opacity-50 rounded-none cursor-pointer"
-                  >
-                    {prompt}
-                  </button>
-                ))}
+              {/* Quick Prompt Chips (1 Baris Horisontal - Scrollable ke Kanan) */}
+              <div className="w-full max-w-full overflow-x-auto horizontal-scroll-chips border-t border-border-subtle bg-surface px-3 py-2">
+                <div className="flex flex-row flex-nowrap items-center gap-2 w-max">
+                  {quickPrompts.map((prompt, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => handleSendMessage(prompt)}
+                      disabled={isLoading || isTyping}
+                      className="shrink-0 whitespace-nowrap text-[11px] px-2.5 py-1 bg-surface-muted text-text-primary border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors text-left disabled:opacity-50 rounded-none cursor-pointer"
+                    >
+                      {prompt}
+                    </button>
+                  ))}
+                </div>
               </div>
 
               {/* Input Form Bar */}

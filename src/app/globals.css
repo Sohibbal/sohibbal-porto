@@ -119,8 +119,10 @@ span {
 
 /* Custom subtle scrollbar for horizontal quick prompt chips */
 .horizontal-scroll-chips {
-  overflow-x: auto;
-  white-space: nowrap;
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
+  white-space: nowrap !important;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: thin;
   scrollbar-color: var(--border-subtle) transparent;
 }

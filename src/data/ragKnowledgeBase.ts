@@ -77,9 +77,9 @@ Selain itu, ia mengantongi sertifikat resmi Asisten Laboratorium Basis Data Lanj
     id: 'skills',
     title: 'Keahlian Teknis & Tech Stack',
     category: 'skills',
-    keywords: ['skill', 'keahlian', 'tech stack', 'teknologi', 'bahasa', 'python', 'tensorflow', 'scikit-learn', 'docker', 'nextjs', 'flutter', 'sql'],
+    keywords: ['skill', 'keahlian', 'tech stack', 'teknologi', 'bahasa', 'python', 'tensorflow', 'scikit-learn', 'pytorch', 'langchain', 'hugging face', 'docker', 'nextjs', 'flutter', 'sql'],
     content: `Tech stack dan keahlian Sohibbal meliputi:
-- AI & Machine Learning: TensorFlow, Scikit-Learn, PyTorch, MediaPipe, OpenCV, Retrieval-Augmented Generation (RAG).
+- AI & Machine Learning: TensorFlow, Scikit-Learn, PyTorch, LangChain, Hugging Face, MediaPipe, OpenCV, Retrieval-Augmented Generation (RAG).
 - Bahasa Pemrograman: Python, TypeScript, JavaScript, Dart, SQL.
 - Framework Web & Mobile: Next.js, React, Tailwind CSS, Flutter, Node.js.
 - DevOps, MLOps, & Basis Data: Docker, Prometheus, Grafana, PostgreSQL, MySQL, Git & GitHub.`,
@@ -165,7 +165,7 @@ export function generateFallbackResponse(query: string, chunks: KnowledgeChunk[]
   }
 
   if (queryLower.includes('skill') || queryLower.includes('keahlian') || queryLower.includes('stack') || queryLower.includes('tools')) {
-    return `Tech stack utama Sohibbal meliputi:\n- AI & Machine Learning: TensorFlow, Scikit-Learn, PyTorch, MediaPipe, OpenCV, Retrieval-Augmented Generation (RAG).\n- Bahasa: Python, TypeScript, JavaScript, Dart, SQL.\n- Web & Mobile: Next.js, React, Tailwind CSS, Flutter, Node.js.\n- DevOps & MLOps: Docker, Prometheus, Grafana, PostgreSQL, MySQL, Git.`;
+    return `Tech stack utama Sohibbal meliputi:\n- AI & Machine Learning: TensorFlow, Scikit-Learn, PyTorch, LangChain, Hugging Face, MediaPipe, OpenCV, Retrieval-Augmented Generation (RAG).\n- Bahasa: Python, TypeScript, JavaScript, Dart, SQL.\n- Web & Mobile: Next.js, React, Tailwind CSS, Flutter, Node.js.\n- DevOps & MLOps: Docker, Prometheus, Grafana, PostgreSQL, MySQL, Git.`;
   }
 
   // Synthesize top chunk

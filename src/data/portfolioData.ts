@@ -24,28 +24,33 @@ export const toolsData: ToolItem[] = [
   // 1. AI & Machine Learning
   {
     name: 'TensorFlow',
-    category: 'AI & Machine Learning',
+    category: 'Deep Learning',
     description: 'Pembangunan dan pelatihan arsitektur neural network, model klasifikasi, dan deep recommendation system.',
   },
   {
     name: 'Scikit-Learn',
-    category: 'AI & Machine Learning',
+    category: 'Machine Learning',
     description: 'Algoritma machine learning fundamental, prapemrosesan data, hyperparameter tuning dengan GridSearch, dan evaluasi metrik.',
   },
   {
     name: 'PyTorch',
-    category: 'AI & Machine Learning',
+    category: 'Deep Learning',
     description: 'Eksperimen model deep learning, komputasi tensor dinamis, dan kustomisasi arsitektur jaringan saraf tiruan.',
   },
   {
-    name: 'MediaPipe & OpenCV',
-    category: 'AI & Machine Learning',
-    description: 'Ekstraksi fitur visual, deteksi landmark wajah dan pose, serta pemrosesan data citra dan video real-time.',
+    name: 'LangChain',
+    category: 'LLM & Orchestration',
+    description: 'Perancangan alur integrasi Large Language Model (LLM), orkestrasi pipeline RAG, memory context, dan chaining agen cerdas.',
   },
   {
-    name: 'Retrieval-Augmented Generation (RAG)',
-    category: 'AI & Machine Learning',
-    description: 'Integrasi Large Language Model dengan sumber pengetahuan eksternal melalui pemrosesan dokumen dan semantic search.',
+    name: 'Hugging Face',
+    category: 'NLP & Open-Source AI',
+    description: 'Eksplorasi arsitektur Transformers, tokenisasi teks, fine-tuning model open-source, dan integrasi Hugging Face Hub serta Spaces.',
+  },
+  {
+    name: 'MediaPipe & OpenCV',
+    category: 'Computer Vision',
+    description: 'Ekstraksi fitur visual, deteksi landmark wajah dan pose, serta pemrosesan data citra dan video real-time.',
   },
 
   // 2. Languages
@@ -64,44 +69,34 @@ export const toolsData: ToolItem[] = [
     category: 'Bahasa Pemrograman',
     description: 'Pengembangan aplikasi mobile interaktif multiplatform bersama framework Flutter.',
   },
-  {
-    name: 'SQL',
-    category: 'Bahasa Pemrograman',
-    description: 'Perancangan basis data relasional, pemodelan entity-relationship (ER), normalisasi tabel, dan kueri analitik.',
-  },
 
   // 3. Web & Mobile
   {
-    name: 'Next.js & React',
-    category: 'Web & Mobile',
+    name: 'Next.js & React Native',
+    category: 'Web & Mobile Framework',
     description: 'Pembangunan web modern berkinerja tinggi dengan arsitektur App Router, SSR, dan rendering interaktif.',
   },
   {
     name: 'Flutter',
-    category: 'Web & Mobile',
+    category: 'Multiplatform Framework',
     description: 'Pembuatan aplikasi mobile responsif dengan arsitektur modular terhubung ke backend REST API.',
-  },
-  {
-    name: 'Tailwind CSS',
-    category: 'Web & Mobile',
-    description: 'Implementasi antarmuka pengguna presisi tinggi berbasis token utility yang rapi dan konsisten.',
   },
 
   // 4. Databases, DevOps & MLOps
   {
-    name: 'Docker',
-    category: 'DevOps & MLOps',
-    description: 'Kontainerisasi layanan inferensi machine learning untuk kemudahan deployment dan portabilitas lintas sistem.',
+    name: 'PostgreSQL',
+    category: 'Database',
+    description: 'Penyimpanan data relasional terstruktur untuk transaksi aplikasi dan manajemen berkas sistem informasi.',
   },
   {
     name: 'Prometheus & Grafana',
-    category: 'DevOps & MLOps',
+    category: 'MLOps',
     description: 'Pencatatan metrik operasional model, monitoring latensi server, dan visualisasi performa sistem live.',
   },
   {
-    name: 'PostgreSQL & MySQL',
+    name: 'Docker',
     category: 'DevOps & MLOps',
-    description: 'Penyimpanan data relasional terstruktur untuk transaksi aplikasi dan manajemen berkas sistem informasi.',
+    description: 'Kontainerisasi layanan inferensi machine learning untuk kemudahan deployment dan portabilitas lintas sistem.',
   },
   {
     name: 'Git & GitHub',

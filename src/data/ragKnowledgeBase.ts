@@ -88,14 +88,24 @@ Selain itu, ia mengantongi sertifikat resmi Asisten Laboratorium Basis Data Lanj
     id: 'contact',
     title: 'Kontak & Saluran Media Sosial',
     category: 'contact',
-    keywords: ['kontak', 'hubungi', 'email', 'whatsapp', 'wa', 'instagram', 'linkedin', 'github', 'sosmed', 'telepon', 'kolaborasi'],
-    content: `Sohibbal dapat dihubungi melalui beberapa saluran resmi:
-- WhatsApp: +62 822-8774-9434 (https://wa.me/6282287749434)
-- Email: iibsohibbal@gmail.com
-- Instagram: @iib25_ (https://instagram.com/iib25_)
-- LinkedIn: https://www.linkedin.com/in/msohibbal/
-- GitHub: https://github.com/Sohibbal
-Sohibbal terbuka untuk kolaborasi riset kecerdasan buatan, proyek pengembangan aplikasi, maupun peluang karir profesional.`,
+    keywords: ['kontak', 'hubungi', 'email', 'whatsapp', 'wa', 'instagram', 'ig', 'linkedin', 'github', 'sosmed', 'telepon', 'kolaborasi'],
+    content: `Sohibbal dapat dihubungi langsung melalui saluran resmi berikut:
+- WhatsApp: [WhatsApp Sohibbal (Klik di sini)](https://wa.me/6282287749434) (+62 822-8774-9434)
+- Instagram: [Instagram @iib25_ (Klik di sini)](https://instagram.com/iib25_)
+- LinkedIn: [LinkedIn Sohibbal (Klik di sini)](https://www.linkedin.com/in/msohibbal/)
+- GitHub: [GitHub Sohibbal (Klik di sini)](https://github.com/Sohibbal)
+- Email: [Kirim Email ke Sohibbal](mailto:iibsohibbal@gmail.com) (iibsohibbal@gmail.com)
+Sohibbal sangat terbuka untuk diskusi kolaborasi riset kecerdasan buatan, proyek rekayasa software, maupun peluang kerja profesional.`,
+  },
+  {
+    id: 'support-system-yuri',
+    title: 'Support System & Pasangan (Yuri Marisa)',
+    category: 'profile',
+    keywords: ['yuri', 'marisa', 'pacar', 'pasangan', 'cewek', 'doi', 'support system', 'kkn', 'pebadaran', 'pusako', 'siak', 'bengkalis', 'bantan', 'osn', 'pelatda', 'mutiara merdeka', 'ekonomi', 'cinta'],
+    content: `Support system utama sekaligus pacar M. Sohibbal bernama Yuri Marisa. Yuri adalah mahasiswi Universitas Riau program studi Ekonomi Pembangunan angkatan 2023, yang berasal dari Kabupaten Bengkalis (tepatnya daerah Bantan). 
+Mereka resmi saling mengenal dan dekat saat masa Kuliah Kerja Nyata (KKN) tahun 2026 di Desa Pebadaran, Kecamatan Pusako, Kabupaten Siak. 
+Menariknya, sebelum masa KKN tersebut, mereka sebenarnya sudah pernah berada di satu lokasi yang sama pada tahun 2022 saat mengikuti Pelatda OSN Tingkat Provinsi di Hotel Mutiara Merdeka, Pekanbaru (saat itu Sohibbal mewakili bidang Kimia dan Yuri di bidang Ekonomi). 
+Yuri adalah sosok penyemangat nomor satu yang selalu memberikan energi positif dalam perjalanan akademik, riset, dan rekayasa AI Sohibbal. Portofolio web Yuri Marisa dapat diakses di: [Portofolio Yuri Marisa (Klik di sini)](https://yuri-marisa.vercel.app/).`,
   },
 ];
 
@@ -135,7 +145,7 @@ export function searchKnowledgeBase(query: string, topK = 3): KnowledgeChunk[] {
   const results = scoredChunks.filter((item) => item.score > 0).map((item) => item.chunk);
 
   if (results.length === 0) {
-    return [sohibbalKnowledgeChunks[0], sohibbalKnowledgeChunks[8]];
+    return [sohibbalKnowledgeChunks[0], sohibbalKnowledgeChunks[sohibbalKnowledgeChunks.length - 2]];
   }
 
   return results.slice(0, topK);
@@ -143,32 +153,67 @@ export function searchKnowledgeBase(query: string, topK = 3): KnowledgeChunk[] {
 
 /**
  * Intelligent zero-downtime fallback responder
- * Ensures that if GEMINI_API_KEY is not set or network fails, the chatbot still responds accurately and politely!
+ * Ensures that if GEMINI_API_KEY is not set or network fails, the chatbot still responds accurately, friendly, and naturally!
  */
 export function generateFallbackResponse(query: string, chunks: KnowledgeChunk[]): string {
   const queryLower = query.toLowerCase();
 
-  if (queryLower.includes('kontak') || queryLower.includes('hubungi') || queryLower.includes('email') || queryLower.includes('wa') || queryLower.includes('instagram')) {
-    return `Anda dapat menghubungi Sohibbal secara langsung melalui:\n- WhatsApp: +62 822-8774-9434\n- Email: iibsohibbal@gmail.com\n- Instagram: @iib25_\n- LinkedIn: linkedin.com/in/msohibbal\n- GitHub: github.com/Sohibbal\n\nSohibbal terbuka untuk diskusi kolaborasi riset AI, proyek software, maupun peluang kerja profesional.`;
+  // 1. Support system / Pacar (Yuri Marisa)
+  if (
+    queryLower.includes('yuri') ||
+    queryLower.includes('marisa') ||
+    queryLower.includes('pacar') ||
+    queryLower.includes('pasangan') ||
+    queryLower.includes('doi') ||
+    queryLower.includes('cewek') ||
+    queryLower.includes('support system') ||
+    queryLower.includes('cinta')
+  ) {
+    return `Sohibbal punya pacar sekaligus support system terbaik bernama **Yuri Marisa**!\n\nYuri adalah mahasiswi Universitas Riau prodi Ekonomi Pembangunan (angkatan 2023) yang berasal dari daerah Bantan, Kabupaten Bengkalis.\n\nKisah pertemuan mereka cukup unik dan seru:\n- Mereka mulai dekat dan menjalin hubungan saat kegiatan KKN tahun 2026 di Desa Pebadaran, Kecamatan Pusako, Kabupaten Siak.\n- Namun sebenarnya, mereka sudah pernah berada di satu lokasi yang sama di tahun 2022 saat Pelatda OSN Tingkat Provinsi di Hotel Mutiara Merdeka, Pekanbaru. Waktu itu Sohibbal mewakili bidang Kimia, sedangkan Yuri di bidang Ekonomi.\n\nYuri selalu jadi pendukung nomor satu yang menyemangati Sohibbal dalam studi dan riset teknologi. Kamu juga bisa lihat portofolio web Yuri langsung di sini: [Portofolio Yuri Marisa (Klik di sini)](https://yuri-marisa.vercel.app/)!`;
   }
 
-  if (queryLower.includes('proyek') || queryLower.includes('project') || queryLower.includes('karya')) {
-    return `Sohibbal telah mengerjakan beberapa proyek unggulan:\n1. MISTECH: Platform edukasi mitigasi bencana untuk siswa SD (Flutter & REST API backend).\n2. INTELVIEW: Sistem evaluasi wawancara multimodal AI (OpenCV, MediaPipe, YOLO).\n3. Corseo: Sistem rekomendasi cerdas berbasis Neural Collaborative Filtering & TF-IDF (TensorFlow).\n4. SMART E-PPM: Chatbot informasi berbasis Retrieval-Augmented Generation (RAG) untuk LPPM Universitas Riau.\n5. MLOps Obesity Classification: Alur kerja klasifikasi obesitas lengkap dengan Docker, Prometheus, dan Grafana.\n\nSetiap proyek memiliki repositori GitHub dan tautan deploy yang dapat Anda lihat pada section Proyek di portofolio ini.`;
+  // 2. Kontak & Media Sosial
+  if (
+    queryLower.includes('kontak') ||
+    queryLower.includes('hubungi') ||
+    queryLower.includes('email') ||
+    queryLower.includes('wa') ||
+    queryLower.includes('whatsapp') ||
+    queryLower.includes('instagram') ||
+    queryLower.includes('ig') ||
+    queryLower.includes('linkedin') ||
+    queryLower.includes('github') ||
+    queryLower.includes('sosmed')
+  ) {
+    return `Mau ngobrol langsung atau diskusi proyek dengan Sohibbal? Yuk, langsung hubungi lewat kontak dan media sosial berikut (tinggal klik saja):\n\n- WhatsApp: [WhatsApp Sohibbal (Klik di sini)](https://wa.me/6282287749434) (+62 822-8774-9434)\n- Instagram: [Instagram @iib25_ (Klik di sini)](https://instagram.com/iib25_)\n- LinkedIn: [LinkedIn Sohibbal (Klik di sini)](https://www.linkedin.com/in/msohibbal/)\n- GitHub: [GitHub Sohibbal (Klik di sini)](https://github.com/Sohibbal)\n- Email: [Kirim Email ke Sohibbal](mailto:iibsohibbal@gmail.com) (iibsohibbal@gmail.com)\n\nSohibbal ramah dan selalu terbuka untuk kolaborasi riset AI, proyek software, maupun tawaran kesempatan kerja. Sapa aja sekarang!`;
   }
 
-  if (queryLower.includes('asisten') || queryLower.includes('lab') || queryLower.includes('ajar') || queryLower.includes('dosen')) {
-    return `Di Universitas Riau, Sohibbal aktif sebagai Asisten Laboratorium:\n- Asisten Lab Kecerdasan Buatan (Lab AI, 2026 - Sekarang): Memandu praktikum algoritma AI, konsep machine learning, dan membimbing penugasan kode mahasiswa.\n- Asisten Lab Basis Data (Lab DB, 2026): Mengajar pemodelan relasional, normalisasi tabel, dan SQL query efisien.`;
+  // 3. Proyek Unggulan
+  if (queryLower.includes('proyek') || queryLower.includes('project') || queryLower.includes('karya') || queryLower.includes('portfolio')) {
+    return `Sohibbal sudah mengembangkan beberapa proyek unggulan di bidang AI, mobile, dan MLOps:\n\n1. **MISTECH**: Platform edukasi mitigasi bencana interaktif untuk siswa SD (Flutter & REST API). Lihat di [Live Website](https://mistechgeosentra.com/) atau cek [GitHub](https://github.com/Sohibbal/mistech-app).\n2. **INTELVIEW**: Sistem evaluasi wawancara otomatis multimodal AI (OpenCV, MediaPipe, YOLO). Coba live demo di [Hugging Face Space](https://aqul-intelview.hf.space) atau cek [GitHub](https://github.com/zennn08/intelview).\n3. **Corseo**: Sistem rekomendasi berbasis AI menggunakan Neural Collaborative Filtering & TF-IDF (TensorFlow). Akses di [Live Website](https://corseo.mistechgeosentra.com) atau cek [GitHub](https://github.com/Diki04/Corseo).\n4. **SMART E-PPM**: Chatbot informasi RAG untuk sivitas akademika LPPM Universitas Riau. Kunjungi [Situs Resmi E-PPM](https://e-ppm.unri.ac.id/home/).\n5. **MLOps Obesity Classification**: Pipeline machine learning terintegrasi Docker, Prometheus, dan Grafana. Cek [GitHub](https://github.com/Sohibbal/obesity-classification).\n\nMau tahu detail arsitektur dari proyek yang mana? Tanyakan aja ke BalBot!`;
   }
 
-  if (queryLower.includes('prestasi') || queryLower.includes('sertifikat') || queryLower.includes('award') || queryLower.includes('juara') || queryLower.includes('lulus')) {
-    return `Pencapaian utama Sohibbal meliputi:\n- Distinction Graduate (Top 10% dari 700+ peserta) pada Coding Camp powered by DBS Foundation & Dicoding 2026 (AI Engineer Cohort).\n- Distinction Graduate (Top 10% dari 1.000+ peserta) pada program Asah Led by Dicoding with Accenture 2025 (Machine Learning Cohort).\n- Linear Regression Modeling Specialist dari Yandex & Digitalent Scholarship Kominfo 2025.\n- Mahasiswa Teknik Informatika Universitas Riau dengan IPK 3.81.`;
+  // 4. Riset & Publikasi
+  if (queryLower.includes('riset') || queryLower.includes('jurnal') || queryLower.includes('penelitian') || queryLower.includes('cifake') || queryLower.includes('cv')) {
+    return `Sohibbal aktif melakukan riset Computer Vision yang sudah dipublikasikan di jurnal ilmiah:\n\n- Judul Riset: *Perbandingan Kinerja Model CNN EfficientNetB0 dan Vision Transformer Untuk Klasifikasi Citra Real-Fake*\n- Publikasi: Journal of System & Technology (SYSTEC) UNRI Vol. 2 No. 1 (2026)\n- Hasil Utama: Model Vision Transformer (ViT) terbukti sangat tangguh dengan akurasi 97,15% pada 120.000 citra dataset CIFAKE, mengungguli CNN EfficientNetB0 (84,79%).\n- Tautan Jurnal: [Baca Artikel Jurnal SYSTEC (Klik di sini)](https://systec.ejournal.unri.ac.id/index.php/systec/article/view/48)`;
   }
 
-  if (queryLower.includes('skill') || queryLower.includes('keahlian') || queryLower.includes('stack') || queryLower.includes('tools')) {
-    return `Tech stack utama Sohibbal meliputi:\n- AI & Machine Learning: TensorFlow, Scikit-Learn, PyTorch, LangChain, Hugging Face, MediaPipe, OpenCV, Retrieval-Augmented Generation (RAG).\n- Bahasa: Python, TypeScript, JavaScript, Dart, SQL.\n- Web & Mobile: Next.js, React, Tailwind CSS, Flutter, Node.js.\n- DevOps & MLOps: Docker, Prometheus, Grafana, PostgreSQL, MySQL, Git.`;
+  // 5. Asisten Laboratorium
+  if (queryLower.includes('asisten') || queryLower.includes('lab') || queryLower.includes('ajar') || queryLower.includes('dosen') || queryLower.includes('praktikum')) {
+    return `Di Universitas Riau, Sohibbal dipercaya sebagai Asisten Laboratorium:\n\n- **Asisten Lab Kecerdasan Buatan (Lab AI, 2026 - Sekarang)**: Membimbing praktikum algoritma AI, konsep machine learning, dan evaluasi implementasi kode mahasiswa.\n- **Asisten Lab Basis Data (Lab DB, 2026)**: Mengajar pemodelan relasional, normalisasi tabel, dan SQL query efisien.\n\nSohibbal senang berbagi ilmu dan mendiskusikan implementasi teknis bersama teman-teman mahasiswa.`;
+  }
+
+  // 6. Prestasi & Penghargaan
+  if (queryLower.includes('prestasi') || queryLower.includes('sertifikat') || queryLower.includes('award') || queryLower.includes('juara') || queryLower.includes('lulus') || queryLower.includes('dbs')) {
+    return `Beberapa pencapaian membanggakan yang diraih Sohibbal:\n\n- **Distinction Graduate (Top 10% dari 700+ peserta)** pada Coding Camp powered by DBS Foundation & Dicoding 2026 (AI Engineer Cohort).\n- **Distinction Graduate (Top 10% dari 1.000+ peserta)** pada program Asah Led by Dicoding with Accenture 2025 (Machine Learning Cohort).\n- **Linear Regression Modeling Specialist** dari Yandex & Digitalent Scholarship Kominfo 2025.\n- Mahasiswa Teknik Informatika Universitas Riau dengan IPK 3.81.`;
+  }
+
+  // 7. Tech Stack & Keahlian
+  if (queryLower.includes('skill') || queryLower.includes('keahlian') || queryLower.includes('stack') || queryLower.includes('tools') || queryLower.includes('teknologi')) {
+    return `Tech stack utama yang sering dipakai Sohibbal:\n\n- **AI & Machine Learning**: TensorFlow, Scikit-Learn, PyTorch, LangChain, Hugging Face, MediaPipe, OpenCV, serta arsitektur Retrieval-Augmented Generation (RAG).\n- **Bahasa Pemrograman**: Python, TypeScript, JavaScript, Dart, SQL.\n- **Web & Mobile**: Next.js, React, Tailwind CSS, Flutter, Node.js.\n- **DevOps, MLOps, & Database**: Docker, Prometheus, Grafana, PostgreSQL, MySQL, Git & GitHub.`;
   }
 
   // Synthesize top chunk
   const top = chunks[0];
-  return `${top.content}\n\nApakah ada hal spesifik lain tentang proyek atau pengalaman Sohibbal yang ingin Anda ketahui?`;
+  return `${top.content}\n\nAda hal lain yang ingin kamu tanyakan seputar portofolio, proyek, atau perjalanan Sohibbal? BalBot siap membantu!`;
 }

@@ -15,9 +15,72 @@ interface Message {
 
 const quickPrompts = [
   'Apa saja proyek AI unggulan Sohibbal?',
-  'Bagaimana pengalaman Asisten Lab Sohibbal?',
-  'Bagaimana cara menghubungi Sohibbal?',
+  'Siapa support system atau pacar Sohibbal?',
+  'Bagaimana cara menghubungi Sohibbal langsung?',
 ];
+
+/**
+ * Helper to parse markdown links [label](url), plain URLs, and **bold** text into clickable/styled JSX elements.
+ */
+function renderFormattedMessage(text: string, isUser = false): React.ReactNode[] {
+  const elements: React.ReactNode[] = [];
+  const regex = /\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+)\)|(https?:\/\/[^\s<>()]+)|\*\*([^*]+)\*\*/g;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+
+  while ((match = regex.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      elements.push(text.slice(lastIndex, match.index));
+    }
+
+    if (match[1] && match[2]) {
+      // Markdown link [label](url)
+      elements.push(
+        <a
+          key={`md-link-${match.index}`}
+          href={match[2]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`underline font-bold inline-flex items-center gap-0.5 ${
+            isUser ? 'text-background hover:opacity-80' : 'text-accent-brand hover:opacity-80'
+          }`}
+        >
+          {match[1]} ↗
+        </a>
+      );
+    } else if (match[3]) {
+      // Plain URL
+      elements.push(
+        <a
+          key={`raw-url-${match.index}`}
+          href={match[3]}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={`underline font-bold break-all inline-flex items-center gap-0.5 ${
+            isUser ? 'text-background hover:opacity-80' : 'text-accent-brand hover:opacity-80'
+          }`}
+        >
+          {match[3]} ↗
+        </a>
+      );
+    } else if (match[4]) {
+      // Bold text **text**
+      elements.push(
+        <strong key={`bold-${match.index}`} className="font-bold text-inherit">
+          {match[4]}
+        </strong>
+      );
+    }
+
+    lastIndex = regex.lastIndex;
+  }
+
+  if (lastIndex < text.length) {
+    elements.push(text.slice(lastIndex));
+  }
+
+  return elements;
+}
 
 // =========================================================================
 // KONFIGURASI KECEPATAN ANIMASI KETIKAN (TYPEWRITER SPEED CONFIG)
@@ -49,7 +112,7 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
     {
       id: 'welcome',
       sender: 'assistant',
-      text: 'Halo! Saya Sohibbal Assistant, asisten cerdas berbasis Retrieval-Augmented Generation (RAG). Silakan tanyakan apa saja seputar proyek AI, keahlian machine learning, riwayat mengajar, atau kontak M. Sohibbal.',
+      text: 'Halo! Kenalin, aku BalBot, asisten AI resmi portofolio M. Sohibbal. Mau tanya-tanya seputar proyek AI, riset machine learning, keahlian teknis, kontak, atau cerita seru di balik perjalanan Sohibbal? Yuk, tanyakan saja, aku siap bantu!',
       time: 'Baru saja',
     },
   ]);
@@ -221,7 +284,7 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
       streamBotMessage(replyText, data.sources);
     } catch (err) {
       setIsLoading(false);
-      const errorMsgText = 'Koneksi asisten sedang mengalami kendala. Silakan coba kembali dalam beberapa saat atau hubungi Sohibbal langsung melalui WhatsApp di +62 822-8774-9434.';
+      const errorMsgText = 'Koneksi BalBot sedang mengalami sedikit kendala. Silakan coba kembali dalam beberapa saat, atau langsung hubungi Sohibbal lewat [WhatsApp (Klik di sini)](https://wa.me/6282287749434) ya!';
       streamBotMessage(errorMsgText);
     }
   };
@@ -237,7 +300,7 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
       {
         id: 'welcome',
         sender: 'assistant',
-        text: 'Percakapan telah direset. Silakan tanyakan hal lain seputar portofolio dan proyek Sohibbal!',
+        text: 'Percakapan sudah direset ya. Mau tanya apa lagi seputar proyek, keahlian, atau cerita perjalanan Sohibbal? BalBot siap jawab!',
         time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       },
     ]);
@@ -258,14 +321,14 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
-              aria-label={isOpen ? 'Tutup Asisten AI' : 'Buka Asisten AI RAG Sohibbal'}
+              aria-label={isOpen ? 'Tutup BalBot' : 'Buka BalBot Asisten AI Sohibbal'}
               className="group relative flex items-center space-x-2.5 px-4 py-3 bg-surface border-2 border-accent-brand text-text-primary shadow-xl hover:bg-accent-brand hover:text-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
             >
               <div className="relative">
                 <Bot className="w-5 h-5 text-accent-brand group-hover:text-background transition-colors" />
               </div>
               <span className="text-xs font-bold tracking-tight uppercase">
-                Tanya AI
+                BalBot
               </span>
             </button>
           </motion.div>
@@ -292,18 +355,18 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
               {/* Drawer Header */}
               <div className="p-4 bg-surface-muted border-b border-border-subtle flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 bg-accent-brand text-background flex items-center justify-center font-bold text-xs">
-                    AI
+                  <div className="w-8 h-8 bg-accent-brand text-background flex items-center justify-center rounded-none">
+                    <Bot className="w-4 h-4 text-background" />
                   </div>
                   <div>
                     <div className="flex items-center space-x-1.5">
                       <h3 className="text-xs font-bold uppercase tracking-wider text-text-primary">
-                        Sohibbal Assistant
+                        BalBot
                       </h3>
                       <span className="w-2 h-2 rounded-full bg-emerald-500" />
                     </div>
                     <p className="text-[11px] text-text-muted">
-                      RAG Architecture Guide
+                      Asisten AI Portofolio Sohibbal
                     </p>
                   </div>
                 </div>
@@ -345,7 +408,7 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
                       }`}
                     >
                       <p className="whitespace-pre-wrap leading-relaxed">
-                        {msg.text}
+                        {renderFormattedMessage(msg.text, msg.sender === 'user')}
                         {msg.isStreaming && (
                           <span className="inline-block w-1.5 h-3 bg-accent-brand ml-1 align-baseline animate-pulse" />
                         )}

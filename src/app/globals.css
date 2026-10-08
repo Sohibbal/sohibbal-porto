@@ -117,3 +117,27 @@ span {
   animation-play-state: paused;
 }
 
+/* Custom subtle scrollbar for horizontal quick prompt chips */
+.horizontal-scroll-chips {
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) transparent;
+}
+
+.horizontal-scroll-chips::-webkit-scrollbar {
+  height: 4px;
+}
+
+.horizontal-scroll-chips::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.horizontal-scroll-chips::-webkit-scrollbar-thumb {
+  background-color: var(--border-subtle);
+}
+
+.horizontal-scroll-chips::-webkit-scrollbar-thumb:hover {
+  background-color: var(--accent-brand);
+}
+

@@ -13,6 +13,11 @@ interface Message {
   isStreaming?: boolean;
 }
 
+// =========================================================================
+// PENGATURAN PERTANYAAN CEPAT (QUICK PROMPTS)
+// Anda dapat mengubah, menambah, atau menghapus teks pertanyaan di bawah ini.
+// Teks di dalam array ini akan muncul sebagai tombol di atas kolom input chat.
+// =========================================================================
 const quickPrompts = [
   'Apa saja proyek AI unggulan Sohibbal?',
   'Siapa support system atau pacar Sohibbal?',
@@ -448,15 +453,15 @@ export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) 
                 <div ref={messagesEndRef} />
               </div>
 
-              {/* Quick Prompt Chips */}
-              <div className="p-2.5 bg-surface border-t border-border-subtle flex flex-wrap gap-1.5 overflow-x-auto">
+              {/* Quick Prompt Chips (1 Baris Memanjang ke Kanan & Scroll Horizontal) */}
+              <div className="px-3 py-2 bg-surface border-t border-border-subtle flex items-center space-x-2 horizontal-scroll-chips">
                 {quickPrompts.map((prompt, idx) => (
                   <button
                     key={idx}
                     type="button"
                     onClick={() => handleSendMessage(prompt)}
                     disabled={isLoading || isTyping}
-                    className="text-[11px] px-2.5 py-1 bg-surface-muted text-text-primary border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors text-left disabled:opacity-50"
+                    className="shrink-0 whitespace-nowrap text-[11px] px-2.5 py-1 bg-surface-muted text-text-primary border border-border-subtle hover:border-accent-brand hover:text-accent-brand transition-colors text-left disabled:opacity-50 rounded-none cursor-pointer"
                   >
                     {prompt}
                   </button>

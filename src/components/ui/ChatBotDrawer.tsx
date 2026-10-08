@@ -19,8 +19,9 @@ interface Message {
 // Teks di dalam array ini akan muncul sebagai tombol di atas kolom input chat.
 // =========================================================================
 const quickPrompts = [
+  'Siapa Sohibbal sebenarnya?',
   'Apa saja proyek AI unggulan Sohibbal?',
-  'Siapa support system atau pacar Sohibbal?',
+  'Bagaimana rekam pengalaman sohibbal?',
   'Bagaimana cara menghubungi Sohibbal langsung?',
 ];
 

@@ -49,6 +49,7 @@ export default function Home() {
   });
 
   const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null);
+  const [isLoadingComplete, setIsLoadingComplete] = useState(false);
 
   const handleOpenModal = (image: {
     src: string;
@@ -89,7 +90,7 @@ export default function Home() {
   return (
     <div className="relative min-h-screen bg-background text-text-primary selection:bg-accent-soft selection:text-accent-brand">
       {/* 1. Kinetic Monogram Loading Screen */}
-      <LoadingScreen />
+      <LoadingScreen onComplete={() => setIsLoadingComplete(true)} />
 
       {/* 2. Sticky Glass Navbar & Theme Switcher */}
       <Navbar />
@@ -136,8 +137,8 @@ export default function Home() {
         project={selectedProject}
       />
 
-      {/* 8. Floating RAG Chatbot Assistant (Bottom Right) */}
-      <ChatBotDrawer />
+      {/* 8. Floating RAG Chatbot Assistant (Muncul hanya setelah LoadingScreen selesai) */}
+      <ChatBotDrawer isVisible={isLoadingComplete} />
     </div>
   );
 }

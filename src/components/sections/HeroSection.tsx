@@ -2,7 +2,9 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Github, Linkedin } from 'lucide-react';
 import HeroPhotoDeck from '@/components/sections/HeroPhotoDeck';
+import { contactData } from '@/data/portfolioData';
 
 interface HeroSectionProps {
   onOpenCv?: () => void;
@@ -46,16 +48,6 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
     return () => clearTimeout(timeout);
   }, [currentText, isDeleting, wordIndex]);
 
-  const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      const topOffset = 80;
-      const elementPosition = el.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - topOffset;
-      window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
-    }
-  };
-
   return (
     <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden bg-background">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -88,8 +80,8 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
               Mahasiswa Teknik Informatika Universitas Riau dengan antusiasme tinggi di bidang machine learning, MLOps, dan rekayasa perangkat lunak terapan. Peraih predikat ganda Distinction Graduate (Top 10%) program industri nasional DBS Foundation dan Accenture.
             </p>
 
-            {/* Clean Action Buttons: CV button with PDF modal and Contact link */}
-            <div className="flex flex-wrap items-center gap-4 pt-2">
+            {/* Clean Action Buttons: CV button with PDF modal, plus GitHub & LinkedIn links */}
+            <div className="flex flex-wrap items-center gap-3 pt-2">
               <button
                 type="button"
                 onClick={() => {
@@ -104,13 +96,27 @@ export default function HeroSection({ onOpenCv }: HeroSectionProps) {
                 <span>Lihat CV ↗</span>
               </button>
 
-              <button
-                type="button"
-                onClick={() => scrollTo('kontak')}
-                className="px-6 py-3.5 bg-surface border border-border-subtle text-text-primary font-bold text-sm hover:border-accent-brand hover:text-accent-brand transition-colors rounded-none"
+              <a
+                href={contactData.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3.5 bg-surface border border-border-subtle text-text-primary hover:border-accent-brand hover:text-accent-brand font-bold text-sm transition-colors flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
+                aria-label="Kunjungi profil GitHub M. Sohibbal"
               >
-                <span>Hubungi Saya →</span>
-              </button>
+                <Github className="w-4 h-4" />
+                <span>GitHub ↗</span>
+              </a>
+
+              <a
+                href={contactData.linkedinLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-5 py-3.5 bg-surface border border-border-subtle text-text-primary hover:border-accent-brand hover:text-accent-brand font-bold text-sm transition-colors flex items-center space-x-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
+                aria-label="Kunjungi profil LinkedIn M. Sohibbal"
+              >
+                <Linkedin className="w-4 h-4" />
+                <span>LinkedIn ↗</span>
+              </a>
             </div>
           </motion.div>
 

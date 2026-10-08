@@ -12,19 +12,30 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
 
   useEffect(() => {
     const hasVisited = sessionStorage.getItem('sohibbal_visited');
-    const delayTime = hasVisited ? 1200 : 2500;
+    const delayTime = hasVisited ? 2000 : 3000;
 
     const timer = setTimeout(() => {
       setIsVisible(false);
       sessionStorage.setItem('sohibbal_visited', 'true');
-      if (onComplete) onComplete();
     }, delayTime);
 
-    return () => clearTimeout(timer);
+    // Fallback timer to guarantee onComplete is called even if animations are suppressed
+    const fallbackTimer = setTimeout(() => {
+      if (onComplete) onComplete();
+    }, delayTime + 750);
+
+    return () => {
+      clearTimeout(timer);
+      clearTimeout(fallbackTimer);
+    };
   }, [onComplete]);
 
   return (
-    <AnimatePresence>
+    <AnimatePresence
+      onExitComplete={() => {
+        if (onComplete) onComplete();
+      }}
+    >
       {isVisible && (
         <motion.div
           key="loader"
@@ -99,7 +110,7 @@ export default function LoadingScreen({ onComplete }: LoadingScreenProps) {
                 M. Sohibbal
               </h2>
               <p className="text-[11px] uppercase tracking-widest text-text-muted font-semibold">
-                AI &amp; Software Portfolio
+                Portfolio
               </p>
             </motion.div>
 

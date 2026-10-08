@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Mail, Github, Linkedin, Instagram } from 'lucide-react';
+import { Mail, Instagram } from 'lucide-react';
 import { contactData } from '@/data/portfolioData';
 
 export default function ContactSection() {
@@ -104,27 +104,6 @@ export default function ContactSection() {
               <span className="text-xs text-text-muted font-normal">@{contactData.instagram} ↗</span>
             </a>
 
-            {/* GitHub & LinkedIn Row */}
-            <div className="grid grid-cols-2 gap-2">
-              <a
-                href={contactData.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 px-3 py-3 bg-surface border border-border-subtle text-text-primary hover:border-accent-brand hover:text-accent-brand font-bold text-xs transition-colors rounded-none"
-              >
-                <Github className="w-4 h-4" />
-                <span>GitHub ↗</span>
-              </a>
-              <a
-                href={contactData.linkedinLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 px-3 py-3 bg-surface border border-border-subtle text-text-primary hover:border-accent-brand hover:text-accent-brand font-bold text-xs transition-colors rounded-none"
-              >
-                <Linkedin className="w-4 h-4" />
-                <span>LinkedIn ↗</span>
-              </a>
-            </div>
           </div>
         </div>
       </div>

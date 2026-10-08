@@ -36,7 +36,11 @@ const quickPrompts = [
 const TYPEWRITER_INTERVAL_MS = 35;
 const TYPEWRITER_CHAR_STEP = 1;
 
-export default function ChatBotDrawer() {
+interface ChatBotDrawerProps {
+  isVisible?: boolean;
+}
+
+export default function ChatBotDrawer({ isVisible = true }: ChatBotDrawerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [inputMessage, setInputMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -242,21 +246,31 @@ export default function ChatBotDrawer() {
   return (
     <>
       {/* Floating Trigger Button (FAB) at Bottom Right */}
-      <div className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50">
-        <button
-          type="button"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? 'Tutup Asisten AI' : 'Buka Asisten AI RAG Sohibbal'}
-          className="group relative flex items-center space-x-2.5 px-4 py-3 bg-surface border-2 border-accent-brand text-text-primary shadow-xl hover:bg-accent-brand hover:text-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
-        >
-          <div className="relative">
-            <Bot className="w-5 h-5 text-accent-brand group-hover:text-background transition-colors" />
-          </div>
-          <span className="text-xs font-bold tracking-tight uppercase">
-            Tanya AI
-          </span>
-        </button>
-      </div>
+      <AnimatePresence>
+        {isVisible && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 16 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="fixed bottom-5 right-5 sm:bottom-7 sm:right-7 z-50"
+          >
+            <button
+              type="button"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Tutup Asisten AI' : 'Buka Asisten AI RAG Sohibbal'}
+              className="group relative flex items-center space-x-2.5 px-4 py-3 bg-surface border-2 border-accent-brand text-text-primary shadow-xl hover:bg-accent-brand hover:text-background transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-brand rounded-none"
+            >
+              <div className="relative">
+                <Bot className="w-5 h-5 text-accent-brand group-hover:text-background transition-colors" />
+              </div>
+              <span className="text-xs font-bold tracking-tight uppercase">
+                Tanya AI
+              </span>
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Slide-in Chat Drawer */}
       <AnimatePresence>
